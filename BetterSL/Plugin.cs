@@ -8,6 +8,7 @@ using PluginAPI;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Core;
 using PluginAPI.Helpers;
+using HarmonyLib;
 
 namespace BetterSL
 {
@@ -16,7 +17,7 @@ namespace BetterSL
         public const string PluginName = "BetterSL";
         public const string PluginVersion = "0.1.0-alpha";
         public const string PluginDesc = "A plugin to make \'better\' balancing changes to SL.";
-
+        public static Harmony harmony;
         public static Plugin instance;
         [PluginConfig(PluginName + ".yml")]
         public Config config = new Config();
@@ -34,6 +35,9 @@ namespace BetterSL
             }
             instance = this;
             PluginAPI.Events.EventManager.RegisterEvents<EventHandler>(this);
+            // harmony my beloved
+            harmony = new Harmony("com.lurkbois.shitbalanceplugin");
+            harmony.PatchAll();
             Log.Debug("BetterSL v" + PluginVersion + " loaded.");
         }
 
@@ -42,6 +46,7 @@ namespace BetterSL
         {
             config = null;
             eventHandler = null;
+            harmony.UnpatchAll("com.lurkbois.shitbalanceplugin"); // this needs to be the same as above or else we unpatch everyone's patches (other plugins) for some godforsaken reason
         }
     }
 }
