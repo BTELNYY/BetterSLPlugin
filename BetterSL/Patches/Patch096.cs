@@ -10,8 +10,8 @@ namespace BetterSL.Patches
         {
             // get the cool field info
             var damage_field_info = AccessTools.Field(typeof(Scp096HitHandler), "_humanTargetDamage");
-            damage_field_info.SetValue(____rightHitHandler, 65f);
-            damage_field_info.SetValue(____leftHitHandler, 65f);
+            damage_field_info.SetValue(____rightHitHandler, Plugin.instance.config.Scp096BitchSlapDamage);
+            damage_field_info.SetValue(____leftHitHandler, Plugin.instance.config.Scp096BitchSlapDamage);
         }
     }
 }
