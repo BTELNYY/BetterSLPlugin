@@ -60,6 +60,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers\Scp106Handler.cs" />
     <Compile Include="Patches\Patch096.cs" />
+    <Compile Include="Patches\SpookyZombieStareSpeedPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -14,5 +14,9 @@ namespace BetterSL
         [Description("How much damage should 096's base attack do?")]
 
         public float Scp096BitchSlapDamage { get; set; } = 65f;
+        
+        [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
+
+        public float LobotomizedBloodlustMaxSpeed { get; set; } = 5.4f;
     }
 }

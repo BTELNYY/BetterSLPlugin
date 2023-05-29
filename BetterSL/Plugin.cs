@@ -17,7 +17,7 @@ namespace BetterSL
         public const string PluginName = "BetterSL";
         public const string PluginVersion = "0.1.0-alpha";
         public const string PluginDesc = "A plugin to make \'better\' balancing changes to SL.";
-        public static Harmony harmony;
+        public Harmony harmony;
         public static Plugin instance;
         [PluginConfig(PluginName + ".yml")]
         public Config config = new Config();
