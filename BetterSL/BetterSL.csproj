@@ -86,11 +86,17 @@
       <HintPath>..\depend\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>..\depend\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="Patches\Scp939CloudAbilityPatch.cs" />
+    <Compile Include="Patches\Scp939ClawPatch.cs" />
     <Compile Include="Patches\Scp079AuxRegenPatch.cs" />
     <Compile Include="Patches\Scp049ArmorPatch.cs" />
     <Compile Include="Patches\Scp106Health.cs" />

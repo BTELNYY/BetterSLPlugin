@@ -26,6 +26,12 @@ namespace BetterSL
         [Description("SCP 079 regen per tier, goes from tier 0 to 5.")]
         public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.5f, 4.1f, 5.6f, 7.1f };
 
+        [Description("SCP 939's base claw cooldown (vanilla is 0.6")]
+        public float Scp939ClawCooldown { get; set; } = 0.7f;
+
+        [Description("Should SCP 939 be able to deploy cloud in elevators?")]
+        public bool Scp939CanUseCloudInElevator { get; set; } = false;
+
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
 
