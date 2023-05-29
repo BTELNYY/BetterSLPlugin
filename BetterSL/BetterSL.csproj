@@ -91,6 +91,7 @@
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="Patches\Scp079AuxRegenPatch.cs" />
     <Compile Include="Patches\Scp049ArmorPatch.cs" />
     <Compile Include="Patches\Scp106Health.cs" />
     <Compile Include="Patches\Scp106Hume.cs" />

@@ -22,6 +22,10 @@ namespace BetterSL
         public static Plugin instance;
         [PluginConfig(PluginName + ".yml")]
         public Config config = new Config();
+        public static Config GetConfig()
+        {
+            return instance.config;
+        }
         public EventHandler eventHandler;
 
         public string AudioPath = Path.Combine($"{Paths.Plugins}", "Sounds");

@@ -20,6 +20,12 @@ namespace BetterSL
         [Description("SCP 049's damage resistence? (default is 20 in vanilla)")]
         public int Scp049Armour { get; set; } = 35;
 
+        [Description("How much AP should 079 spawn with?")]
+        public int Scp079SpawnAP { get; set; } = 0;
+
+        [Description("SCP 079 regen per tier, goes from tier 0 to 5.")]
+        public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.5f, 4.1f, 5.6f, 7.1f };
+
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
 
