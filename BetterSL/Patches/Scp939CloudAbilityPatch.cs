@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using MapGeneration.Distributors;
 using PlayerRoles.PlayableScps.Scp939;
 using PluginAPI.Core;
 using System;
@@ -21,24 +22,30 @@ namespace BetterSL.Patches
                 return false;
             }
             Vector3 pos = __instance.transform.position;
-            //false = not in elevator or check failed.
-            //true in elevator
-            //this is not a very clean way to do this. too bad
-            bool[] counter = { false, false, false, false };
-            counter[0] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.forward), out RaycastHit hit, Mathf.Infinity) && hit.transform.name == "Chamber";
-            Log.Debug(hit.transform.gameObject.name);
-            counter[1] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.right), out RaycastHit hit1, Mathf.Infinity) && hit1.transform.name == "Chamber";
-            Log.Debug(hit1.transform.gameObject.name);
-            counter[2] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.left), out RaycastHit hit2, Mathf.Infinity) && hit2.transform.name == "Chamber";
-            Log.Debug(hit2.transform.gameObject.name);
-            counter[3] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.back), out RaycastHit hit3, Mathf.Infinity) && hit3.transform.name == "Chamber";
-            Log.Debug(hit3.transform.gameObject.name);
-            List<bool> b = counter.Where(x => x = true).ToList();
-            foreach(bool flag in b)
+            pos.y += 0.52f;
+            var collider = __instance.GetComponent("Collider");;
+            if (Physics.Raycast(pos, Vector3.up, out RaycastHit hit, 10f))
             {
-                Log.Debug(flag.ToString());
+                Log.Debug("Raycast hit!");
+                if(hit.transform.gameObject.name == "Chamber")
+                {
+                    Log.Debug("Elevator found, skipping.");
+                    return false;
+                }
+                else
+                {
+                    Log.Debug("Not an elevator. Object: " + hit.transform.gameObject.name);
+                    Log.Debug(hit.transform.position.ToString());
+                    Log.Debug(__instance.transform.position.ToString());
+                    Log.Debug(pos.ToString());
+                    return true;
+                }
             }
-            return false;
+            else
+            {
+                Log.Debug("didn't hit anything");
+                return false;
+            }
         }
     }
 }
