@@ -34,7 +34,7 @@ namespace BetterSL
                 return;
             }
             instance = this;
-            PluginAPI.Events.EventManager.RegisterEvents<EventHandler>(this);
+            //PluginAPI.Events.EventManager.RegisterEvents<EventHandler>(this); //TODO: re-enable events
             // harmony my beloved
             harmony = new Harmony("com.lurkbois.shitbalanceplugin");
             harmony.PatchAll();
