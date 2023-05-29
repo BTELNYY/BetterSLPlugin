@@ -6,9 +6,10 @@ namespace BetterSL.Patches
     [HarmonyPatch(typeof(ZombieMovementModule), "UpdateSpeed")]
     public class SpookyZombieStareSpeedPatch
     {
-        static void Prefix(ref float ___BloodlustSpeed)
+        static void Prefix(ZombieMovementModule __instance)
         {
-            ___BloodlustSpeed = Plugin.instance.config.LobotomizedBloodlustMaxSpeed; // wow guys
+            var field = AccessTools.Field(typeof(ZombieMovementModule), "BloodlustSpeed");
+            field.SetValue(__instance, Plugin.instance.config.LobotomizedBloodlustMaxSpeed); // wow guys
         }
     }
 }
