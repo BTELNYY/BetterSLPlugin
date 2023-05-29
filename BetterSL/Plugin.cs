@@ -9,6 +9,7 @@ using PluginAPI.Core.Attributes;
 using PluginAPI.Core;
 using PluginAPI.Helpers;
 using HarmonyLib;
+using BetterSL.EventHandlers;
 
 namespace BetterSL
 {
@@ -34,11 +35,16 @@ namespace BetterSL
                 return;
             }
             instance = this;
-            //PluginAPI.Events.EventManager.RegisterEvents<EventHandler>(this); //TODO: re-enable events
+            Log.Info("Registering events...");
+            //uneeded
+            //PluginAPI.Events.EventManager.RegisterEvents<Scp106Handler>(this);
+            //Registers every event method possible
+            PluginAPI.Events.EventManager.RegisterAllEvents(this);
             // harmony my beloved
+            Log.Info("Patching...");
             harmony = new Harmony("com.lurkbois.shitbalanceplugin");
             harmony.PatchAll();
-            Log.Debug("BetterSL v" + PluginVersion + " loaded.");
+            Log.Info("BetterSL v" + PluginVersion + " loaded.");
         }
 
         [PluginUnload()]

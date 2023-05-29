@@ -6,7 +6,7 @@ using PlayerRoles.PlayableScps.Scp106;
 namespace BetterSL.Patches
 {
     [HarmonyPatch(typeof(DynamicHumeShieldController), nameof(DynamicHumeShieldController.HsMax), MethodType.Getter)]
-    public class Hume106
+    public class Scp106Hume
     {
         static void Postfix(DynamicHumeShieldController __instance, ref float __result) 
         {

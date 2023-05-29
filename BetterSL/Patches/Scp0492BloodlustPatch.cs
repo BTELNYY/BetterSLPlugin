@@ -4,7 +4,7 @@ using PlayerRoles.PlayableScps.Scp049.Zombies;
 namespace BetterSL.Patches
 { 
     [HarmonyPatch(typeof(ZombieMovementModule), "UpdateSpeed")]
-    public class SpookyZombieStareSpeedPatch
+    public class Scp0492BloodlustPatch
     {
         static void Prefix(ZombieMovementModule __instance)
         {
