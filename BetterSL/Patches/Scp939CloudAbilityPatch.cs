@@ -8,7 +8,6 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
-using PluginAPI.Core;
 
 namespace BetterSL.Patches
 {
@@ -19,28 +18,27 @@ namespace BetterSL.Patches
         {
             if (Plugin.GetConfig().Scp939CanUseCloudInElevator)
             {
-                return true;
+                return false;
             }
-            Vector3 pos = __instance.transform.position + new Vector3(0, 3.2f, 0);
-            if (Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.up), out RaycastHit hit, Mathf.Infinity))
+            Vector3 pos = __instance.transform.position;
+            //false = not in elevator or check failed.
+            //true in elevator
+            //this is not a very clean way to do this. too bad
+            bool[] counter = { false, false, false, false };
+            counter[0] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.forward), out RaycastHit hit, Mathf.Infinity) && hit.transform.name == "Chamber";
+            Log.Debug(hit.transform.gameObject.name);
+            counter[1] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.right), out RaycastHit hit1, Mathf.Infinity) && hit1.transform.name == "Chamber";
+            Log.Debug(hit1.transform.gameObject.name);
+            counter[2] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.left), out RaycastHit hit2, Mathf.Infinity) && hit2.transform.name == "Chamber";
+            Log.Debug(hit2.transform.gameObject.name);
+            counter[3] = Physics.Raycast(pos, __instance.transform.TransformDirection(Vector3.back), out RaycastHit hit3, Mathf.Infinity) && hit3.transform.name == "Chamber";
+            Log.Debug(hit3.transform.gameObject.name);
+            List<bool> b = counter.Where(x => x = true).ToList();
+            foreach(bool flag in b)
             {
-                if(hit.transform.gameObject.name == "Chamber")
-                {
-                    Log.Debug("Skipping check, in elevator!");
-                    return false;
-                }
-                else
-                {
-                    Log.Debug("Not in elevator, continuing!");
-                    Log.Debug(hit.transform.gameObject.name);
-                    return true;
-                }
+                Log.Debug(flag.ToString());
             }
-            else
-            {
-                Log.Debug("Didn't hit anything, allowing continue!");
-                return true;
-            }
+            return false;
         }
     }
 }

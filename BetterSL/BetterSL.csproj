@@ -41,6 +41,12 @@
       <HintPath>..\depend\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Mirror">
+      <HintPath>..\depend\Mirror.dll</HintPath>
+    </Reference>
+    <Reference Include="Mirror.Components">
+      <HintPath>..\depend\Mirror.Components.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Cecil, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.dll</HintPath>
     </Reference>
@@ -92,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="EventHandlers\Scp500UseHandler.cs" />
     <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />

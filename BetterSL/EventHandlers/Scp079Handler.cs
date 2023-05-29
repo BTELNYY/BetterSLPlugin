@@ -29,7 +29,7 @@ namespace BetterSL.EventHandlers
                     Log.Error("Failed to get Scp079 Aux Manager!");
                     return;
                 }
-                manager.CurrentAux = Plugin.instance.config.Scp079SpawnAP;
+                manager.CurrentAux = Plugin.instance.config.Scp079SpawnAp;
             }
             else
             {
