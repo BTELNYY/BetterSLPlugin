@@ -41,6 +41,9 @@
       <HintPath>..\depend\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="CommandSystem.Core">
+      <HintPath>..\depend\CommandSystem.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Mirror">
       <HintPath>..\depend\Mirror.dll</HintPath>
     </Reference>
@@ -98,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="EventHandlers\Scp173SpawnHandler.cs" />
     <Compile Include="EventHandlers\Scp500UseHandler.cs" />
     <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />

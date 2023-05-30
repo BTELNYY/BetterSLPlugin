@@ -32,6 +32,9 @@ namespace BetterSL
         [Description("Should SCP 939 be able to deploy cloud in elevators?")]
         public bool Scp939CanUseCloudInElevator { get; set; } = false;
 
+        [Description("Message to show to 939 players who try to use gas in elevators")]
+        public string Scp939GasInElevatorMessage { get; set; } = "You can't deploy amnestic cloud in elevators!";
+
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 

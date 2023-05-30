@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Interactables.Interobjects;
 using MapGeneration.Distributors;
+using Mirror;
 using PlayerRoles.PlayableScps.Scp939;
 using PluginAPI.Core;
 using System;
@@ -60,7 +61,10 @@ namespace BetterSL.Patches
                 ElevatorChamber chamber = elevdoors.TargetPanel.AssignedChamber;
                 if (chamber.WorldspaceBounds.Contains(__instance.transform.position))
                 {
+                    Server.Broadcast.TargetAddElement(__instance.Owner.characterClassManager.connectionToClient, Plugin.GetConfig().Scp939GasInElevatorMessage, 5, Broadcast.BroadcastFlags.Normal);
+                    __instance.ServerFailPlacement();
                     return false;
+                    
                 }
             }
             return true;
