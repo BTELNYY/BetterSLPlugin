@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BetterSL.Patches
 {
-    [HarmonyPatch(typeof(Scp079AuxManager), nameof(Scp079TierManager.SpawnObject))]
+    [HarmonyPatch(typeof(Scp079AuxManager), nameof(Scp079AuxManager.SpawnObject))]
     public class Scp079AuxRegenPatch
     {
         public static void Postfix(Scp079AuxManager __instance)
