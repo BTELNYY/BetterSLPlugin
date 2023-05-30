@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Interactables.Interobjects;
 using MapGeneration.Distributors;
 using PlayerRoles.PlayableScps.Scp939;
 using PluginAPI.Core;
@@ -19,33 +20,50 @@ namespace BetterSL.Patches
         {
             if (Plugin.GetConfig().Scp939CanUseCloudInElevator)
             {
-                return false;
+                return true;
             }
-            Vector3 pos = __instance.transform.position;
-            pos.y += 0.52f;
-            var collider = __instance.GetComponent("Collider");;
-            if (Physics.Raycast(pos, Vector3.up, out RaycastHit hit, 10f))
+            List<ElevatorDoor> AllElevs = new List<ElevatorDoor>();
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.LczB01, out var list))
             {
-                Log.Debug("Raycast hit!");
-                if(hit.transform.gameObject.name == "Chamber")
+                AllElevs.AddRange(list);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.LczA01, out var list1))
+            {
+                AllElevs.AddRange(list1);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.LczA02, out var list2))
+            {
+                AllElevs.AddRange(list2);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.LczB02, out var list3))
+            {
+                AllElevs.AddRange(list3);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.Scp049, out var list4))
+            {
+                AllElevs.AddRange(list4);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.Nuke, out var list5))
+            {
+                AllElevs.AddRange(list5);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.GateA, out var list6))
+            {
+                AllElevs.AddRange(list6);
+            }
+            if (ElevatorDoor.AllElevatorDoors.TryGetValue(ElevatorManager.ElevatorGroup.GateB, out var list7))
+            {
+                AllElevs.AddRange(list7);
+            }
+            foreach(var elevdoors in  AllElevs)
+            {
+                ElevatorChamber chamber = elevdoors.TargetPanel.AssignedChamber;
+                if (chamber.WorldspaceBounds.Contains(__instance.transform.position))
                 {
-                    Log.Debug("Elevator found, skipping.");
                     return false;
                 }
-                else
-                {
-                    Log.Debug("Not an elevator. Object: " + hit.transform.gameObject.name);
-                    Log.Debug(hit.transform.position.ToString());
-                    Log.Debug(__instance.transform.position.ToString());
-                    Log.Debug(pos.ToString());
-                    return true;
-                }
             }
-            else
-            {
-                Log.Debug("didn't hit anything");
-                return false;
-            }
-        }
+            return true;
+        }           
     }
 }
