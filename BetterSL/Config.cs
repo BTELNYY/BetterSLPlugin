@@ -27,7 +27,7 @@ namespace BetterSL
         public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.5f, 4.1f, 5.6f, 7.1f };
 
         [Description("How much should lockdown cost to use? (Precent of total AP)")]
-        public int Scp079LockdownCostPercent { get; set; } = 80;
+        public float Scp079LockdownCostPercent { get; set; } = 0.8f;
 
         [Description("SCP 939's base claw cooldown (vanilla is 0.6")]
         public float Scp939ClawCooldown { get; set; } = 0.7f;

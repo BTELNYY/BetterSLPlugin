@@ -1,10 +1,13 @@
-﻿using HarmonyLib;
+﻿using GameCore;
+using HarmonyLib;
 using PlayerRoles.PlayableScps.Scp079;
+using PluginAPI.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Log = PluginAPI.Core.Log;
 
 namespace BetterSL.Patches
 {
@@ -20,10 +23,9 @@ namespace BetterSL.Patches
             else
             {
                 var field = AccessTools.Field(typeof(Scp079LockdownRoomAbility), "_cost");
-                float cost = subroutine.MaxAux * (Plugin.GetConfig().Scp079LockdownCostPercent / 100);
+                int cost = (int)(subroutine.MaxAux * (Plugin.GetConfig().Scp079LockdownCostPercent));
                 field.SetValue(__instance, cost);
             }
-
         }
     }
 }
