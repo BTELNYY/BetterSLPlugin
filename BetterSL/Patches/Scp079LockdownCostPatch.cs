@@ -12,7 +12,7 @@ using Log = PluginAPI.Core.Log;
 namespace BetterSL.Patches
 {
     [HarmonyPatch(typeof(Scp079LockdownRoomAbility), "ServerProcessCmd")]
-    public class Scp079LockdownCost
+    public class Scp079LockdownCostPatch
     {
         public static void Prefix(Scp079LockdownRoomAbility __instance)
         {
@@ -23,7 +23,7 @@ namespace BetterSL.Patches
             else
             {
                 var field = AccessTools.Field(typeof(Scp079LockdownRoomAbility), "_cost");
-                int cost = (int)(subroutine.MaxAux * (Plugin.GetConfig().Scp079LockdownCostPercent));
+                int cost = (int)(subroutine.MaxAux * Plugin.GetConfig().Scp079LockdownCostPercent);
                 field.SetValue(__instance, cost);
             }
         }
