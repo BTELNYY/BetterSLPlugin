@@ -35,7 +35,7 @@ namespace BetterSL
         [Description("SCP 079's AP regen rate when lockdown is used. 0 will result in no regen.")]
         public float[] Scp079LockdownRegenMultiplier { get; set; } = { 0, 0, 0, 0.25f, 0.25f };
 
-        [Description("SCP 939's base claw cooldown (vanilla is 0.6")]
+        [Description("SCP 939's base claw cooldown (vanilla is 0.6)")]
         public float Scp939ClawCooldown { get; set; } = 0.7f;
 
         [Description("Should SCP 939 be able to deploy cloud in elevators?")]
@@ -43,6 +43,9 @@ namespace BetterSL
 
         [Description("Message to show to 939 players who try to use gas in elevators")]
         public string Scp939GasInElevatorMessage { get; set; } = "You can't deploy amnestic cloud in elevators!";
+
+        [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
+        public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
 
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BetterSL.Patches
 {
-    [HarmonyPatch(typeof(Scp173BreakneckSpeedsAbility), "Awake")]
+    [HarmonyPatch(typeof(Scp173BreakneckSpeedsAbility), "UpdateServerside")]
     public class Scp173BreakneckSpeedsPatch
     {
         public static void Postfix(Scp173BreakneckSpeedsAbility __instance)

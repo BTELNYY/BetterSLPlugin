@@ -104,11 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
+    <Compile Include="EventHandlers\Scp049SpawnHandler.cs" />
     <Compile Include="EventHandlers\Scp173SpawnHandler.cs" />
     <Compile Include="EventHandlers\Scp500UseHandler.cs" />
     <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="Patches\Scp049ChaseAbilityPatch.cs" />
     <Compile Include="Patches\Scp173BreakneckSpeedsPatch.cs" />
     <Compile Include="Patches\Scp079CooldownPatch.cs" />
     <Compile Include="Patches\Scp079LockdownValuesPatch.cs" />
