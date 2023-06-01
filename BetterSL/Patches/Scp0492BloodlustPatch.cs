@@ -3,13 +3,12 @@ using PlayerRoles.PlayableScps.Scp049.Zombies;
 
 namespace BetterSL.Patches
 { 
-    [HarmonyPatch(typeof(ZombieMovementModule), "UpdateSpeed")]
+    [HarmonyPatch(typeof(ZombieMovementModule), nameof(ZombieMovementModule.BloodlustSpeed), MethodType.Getter)]
     public class Scp0492BloodlustPatch
     {
-        static void Prefix(ZombieMovementModule __instance)
+        public static void Postfix(ZombieMovementModule __instance, ref float __result)
         {
-            var field = AccessTools.Field(typeof(ZombieMovementModule), "BloodlustSpeed");
-            field.SetValue(__instance, Plugin.instance.config.LobotomizedBloodlustMaxSpeed); // wow guys
+            __result = Plugin.GetConfig().LobotomizedBloodlustMaxSpeed;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BetterSL.Patches
         {
             var effecacy = AccessTools.Field(typeof(Scp049Role), "_armorEfficacy");
             var array = AccessTools.GetFieldNames(typeof(Scp049Role));
-            foreach( var name in array )
+            foreach(var name in array )
             {
                 PluginAPI.Core.Log.Debug(name);
             }

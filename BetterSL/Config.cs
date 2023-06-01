@@ -53,6 +53,9 @@ namespace BetterSL
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 
+        [Description("Should a facility manager keycard spawn in 049's room?")]
+        public bool FacilityManagerSpawnsIn049 { get; set; } = true;    
+
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
 
