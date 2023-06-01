@@ -11,6 +11,7 @@ using Interactables.Interobjects.DoorUtils;
 using UnityEngine;
 using PlayerRoles.FirstPersonControl;
 using MapGeneration;
+using MEC;
 
 namespace BetterSL.EventHandlers
 {
@@ -28,21 +29,30 @@ namespace BetterSL.EventHandlers
             //string[] empty = { player.PlayerId.ToString(), "HCZ_ARMORY"};
             //cmd.Execute(new ArraySegment<string>(empty), new RemoteAdmin.PlayerCommandSender(Server.Instance.ReferenceHub), out response);
             //Log.Info(response);
-            foreach(var room in RoomIdentifier.AllRoomIdentifiers)
+            Timing.CallDelayed(1f, () =>
             {
-                if(room.name == "HCZ_Nuke")
+                foreach (var room in RoomIdentifier.AllRoomIdentifiers)
                 {
-                    
-                    Log.Debug("Found nuke room!");
-                    Vector3 pos = room.gameObject.transform.position;
-                    Log.Debug(pos.ToString());
-                    player.Position = pos;
-                    if(!player.ReferenceHub.TryOverridePosition(pos, Vector3.forward))
+                    if (room.name == "HCZ_Nuke")
                     {
-                        Log.Warning("Failed to override position.");
+                        var door = DoorVariant.DoorsByRoom[room].FirstOrDefault();
+                        foreach (var thing in DoorVariant.DoorsByRoom[room])
+                        {
+                            if(thing.name == "LCZ PortallessBreakableDoor")
+                            {
+                                door = thing;
+                            }
+                        }
+                        Vector3 pos = door.gameObject.transform.position;
+                        pos.y += 2f;
+                        player.Position = pos;
+                        if (!player.ReferenceHub.TryOverridePosition(pos, Vector3.forward))
+                        {
+                            Log.Warning("Failed to override position.");
+                        }
                     }
                 }
-            }
+            });
         }
     }
 }

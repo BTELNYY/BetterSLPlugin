@@ -41,6 +41,9 @@
       <HintPath>..\depend\Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>..\depend\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
     <Reference Include="CommandSystem.Core">
       <HintPath>..\depend\CommandSystem.Core.dll</HintPath>
     </Reference>
@@ -106,6 +109,7 @@
     <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="Patches\Scp173BreakneckSpeedsPatch.cs" />
     <Compile Include="Patches\Scp079CooldownPatch.cs" />
     <Compile Include="Patches\Scp079LockdownValuesPatch.cs" />
     <Compile Include="Patches\Scp079LockdownCostPatch.cs" />
