@@ -110,6 +110,7 @@
     <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079Handler.cs" />
     <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="Patches\Scp049ZombiePatch.cs" />
     <Compile Include="Patches\Scp049ChaseAbilityPatch.cs" />
     <Compile Include="Patches\Scp173BreakneckSpeedsPatch.cs" />
     <Compile Include="Patches\Scp079CooldownPatch.cs" />

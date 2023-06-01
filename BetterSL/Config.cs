@@ -47,6 +47,9 @@ namespace BetterSL
         [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
         public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
 
+        [Description("How many times can SCP 049 ressurct 049-2 instances?")]
+        public int Scp049Max0492Ressurection { get; set; } = 1;
+
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 
