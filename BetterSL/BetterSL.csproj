@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="EventHandlers\Scp079DoorHandler.cs" />
     <Compile Include="EventHandlers\Scp0492SpawnHandler.cs" />
+    <Compile Include="Patches\Scp106AttackPatch.cs" />
     <Compile Include="Patches\Scp079DoorLockCostPatch.cs" />
     <Compile Include="Patches\Scp079DoorLockPatch.cs" />
     <Compile Include="Patches\Scp049RevivePatch.cs" />

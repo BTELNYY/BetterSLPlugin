@@ -17,6 +17,15 @@ namespace BetterSL
         [Description("SCP 106's starting health")]
         public float Scp106MaxHP { get; set; } = 1800;
 
+        [Description("How much damage should SCP 106 inflict on hit?")]
+        public float Scp106AttackDamage { get; set; } = 35;
+
+        [Description("How much vigor should SCP 106 get upon killing someone?")]
+        public float Scp106OnKillVigor { get; set; } = 0.2f;
+
+        [Description("How much vigor should SCP 106 get upon clicking someone?")]
+        public float Scp106OnAttackVigor { get; set; } = 0.3f;
+
         [Description("SCP 049's damage resistence? (default is 20 in vanilla)")]
         public int Scp049Armour { get; set; } = 35;
 
