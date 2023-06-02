@@ -35,6 +35,12 @@ namespace BetterSL
         [Description("SCP 079's AP regen rate when lockdown is used. 0 will result in no regen.")]
         public float[] Scp079LockdownRegenMultiplier { get; set; } = { 0, 0, 0, 0.25f, 0.25f };
 
+        [Description("How many doors can SCP 079 have locked at the same time?")]
+        public int Scp079MaxLockedDoors { get; set; } = 1;
+
+        [Description("How much AP should SCP 079 lose when locking doors per tier?")]
+        public float[] Scp079DoorLockCostPercent { get; set; } = { 0.2f, 0.17f, 0.15f, 0.12f, 0.1f };
+
         [Description("SCP 939's base claw cooldown (vanilla is 0.6)")]
         public float Scp939ClawCooldown { get; set; } = 0.7f;
 
