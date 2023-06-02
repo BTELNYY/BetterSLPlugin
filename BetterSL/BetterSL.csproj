@@ -65,9 +65,6 @@
     <Reference Include="Mono.Cecil.Rocks, Version=0.11.4.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
       <HintPath>..\packages\Mono.Cecil.0.11.4\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
     </Reference>
-    <Reference Include="MonoMod.Backports, Version=23.3.22.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoModReorg.Backports.23.3.22.1\lib\net452\MonoMod.Backports.dll</HintPath>
-    </Reference>
     <Reference Include="MonoMod.Core, Version=23.3.22.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MonoModReorg.Core.23.3.22.1\lib\net452\MonoMod.Core.dll</HintPath>
     </Reference>
@@ -103,12 +100,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventHandlers\DimensionBodyHandler.cs" />
+    <Compile Include="EventHandlers\ConsoleCommandHandler.cs" />
     <Compile Include="EventHandlers\Scp079DoorHandler.cs" />
     <Compile Include="EventHandlers\Scp0492SpawnHandler.cs" />
+    <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Patches\Scp106\Scp106AttackPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079DoorLockCostPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079DoorLockPatch.cs" />
     <Compile Include="Patches\Scp049\Scp049RevivePatch.cs" />
+    <Compile Include="Resources\Extensions.cs" />
+    <Compile Include="Resources\FakeConnection.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers\Scp049SpawnHandler.cs" />

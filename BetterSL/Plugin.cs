@@ -10,6 +10,7 @@ using PluginAPI.Core;
 using PluginAPI.Helpers;
 using HarmonyLib;
 using BetterSL.EventHandlers;
+using PlayerRoles.Ragdolls;
 
 namespace BetterSL
 {
@@ -49,6 +50,7 @@ namespace BetterSL
             harmony = new Harmony("com.lurkbois.shitbalanceplugin");
             harmony.PatchAll();
             Log.Info("BetterSL v" + PluginVersion + " loaded.");
+            RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
         }
 
         [PluginUnload()]
@@ -57,6 +59,7 @@ namespace BetterSL
             config = null;
             eventHandler = null;
             harmony.UnpatchAll("com.lurkbois.shitbalanceplugin"); // this needs to be the same as above or else we unpatch everyone's patches (other plugins) for some godforsaken reason
+            RagdollManager.OnRagdollSpawned -= DimensionBodyHandler.OnRagdoll;
         }
     }
 }

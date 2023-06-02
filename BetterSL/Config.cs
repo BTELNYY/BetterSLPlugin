@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-
+using System.Security.Policy;
 
 namespace BetterSL
 {
@@ -25,6 +25,12 @@ namespace BetterSL
 
         [Description("How much vigor should SCP 106 get upon clicking someone?")]
         public float Scp106OnAttackVigor { get; set; } = 0.3f;
+
+        [Description("How long (in seconds) should SCP 106's damage over time last?")]
+        public float Scp106AttackDamageOverTimeDuration { get; set; } = 6f;
+
+        [Description("Amount of time before a body auto drops from PD")]
+        public int Scp106BodyDropDelay { get; set; } = 45;
 
         [Description("SCP 049's damage resistence? (default is 20 in vanilla)")]
         public int Scp049Armour { get; set; } = 35;
