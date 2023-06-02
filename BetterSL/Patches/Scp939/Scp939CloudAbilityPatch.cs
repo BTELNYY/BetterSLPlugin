@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp939
 {
     [HarmonyPatch(typeof(Scp939AmnesticCloudAbility), "OnStateEnabled")]
     public class Scp939CloudAbilityPatch

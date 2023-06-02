@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp049
 {
     [HarmonyPatch(typeof(Scp049Role), nameof(Scp049Role.GetArmorEfficacy))]
     public class Scp049ArmorPatch

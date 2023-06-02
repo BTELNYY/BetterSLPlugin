@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Log = PluginAPI.Core.Log;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp079
 {
     [HarmonyPatch(typeof(Scp079LockdownRoomAbility), "ServerProcessCmd")]
     public class Scp079LockdownCostPatch

@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp079
 {
     [HarmonyPatch(typeof(Scp079DoorLockChanger), "SetDoorLock")]
     public class Scp079DoorLockCostPatch

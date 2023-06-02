@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MEC;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp079
 {
     [HarmonyPatch(typeof(Scp079LockdownRoomAbility), "RemainingCooldown", MethodType.Getter)]
     public class Scp079CooldownPatch

@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BetterSL.EventHandlers;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp079
 {
     [HarmonyPatch(typeof(Scp079DoorLockChanger), nameof(Scp079DoorLockChanger.ServerProcessCmd))]
     public class Scp079DoorLockPatch

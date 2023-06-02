@@ -8,7 +8,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp079
 {
     [HarmonyPatch(typeof(Scp079AuxManager), nameof(Scp079AuxManager.SpawnObject))]
     public class Scp079AuxRegenPatch

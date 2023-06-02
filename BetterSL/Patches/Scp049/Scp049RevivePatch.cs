@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BetterSL.EventHandlers;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp049
 {
     [HarmonyPatch(typeof(Scp049ResurrectAbility), "ServerValidateBegin")]
     public class Scp049RevivePatch

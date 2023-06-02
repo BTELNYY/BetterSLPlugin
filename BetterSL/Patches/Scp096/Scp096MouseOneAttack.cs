@@ -2,7 +2,7 @@
 using HarmonyLib;
 using PlayerRoles.PlayableScps.Scp096;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp096
 {
     [HarmonyPatch(typeof(Scp096AttackAbility), nameof(Scp096AttackAbility.SpawnObject))]
     public class Scp096MouseOneAttack {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp173
 {
     [HarmonyPatch(typeof(Scp173BreakneckSpeedsAbility), "UpdateServerside")]
     public class Scp173BreakneckSpeedsPatch

@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using PluginAPI.Core;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp106
 {
     [HarmonyPatch(typeof(Scp106Attack), "ServerShoot")]
     public class Scp106AttackPatch

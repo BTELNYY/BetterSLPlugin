@@ -1,14 +1,7 @@
 ﻿using HarmonyLib;
 using PlayerRoles.PlayableScps;
-using PlayerRoles.PlayableScps.HumeShield;
-using PlayerRoles.PlayableScps.Scp106;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace BetterSL.Patches
+namespace BetterSL.Patches.Scp106
 {
     [HarmonyPatch(typeof(FpcStandardScp), nameof(FpcStandardScp.MaxHealth), MethodType.Getter)]
     public class Scp106Health
