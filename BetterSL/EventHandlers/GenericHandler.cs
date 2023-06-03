@@ -10,13 +10,13 @@ namespace BetterSL.EventHandlers
 {
     public class GenericHandler
     {
-        [PluginEvent(ServerEventType.RoundStart)]
-        public static void OnRoundRestart()
+        [PluginEvent(ServerEventType.RoundEnd)]
+        public static void OnRoundEnd()
         {
             DimensionBodyHandler.RagdollQueue.Clear();
             Scp079DoorHandler.DoorsLocked = 0;
             DimensionBodyHandler.ThreadStarted = false;
-            DimensionBodyHandler.Handler.IsRunning = false;
+            DimensionBodyHandler.Handler.IsRunning = false;;
         }
     }
 }

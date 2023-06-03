@@ -10,9 +10,6 @@ namespace BetterSL
         
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
-        
-        [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
-        public float LobotomizedBloodlustMaxSpeed { get; set; } = 5.4f;
 
         [Description("SCP 106's starting health")]
         public float Scp106MaxHP { get; set; } = 1800;
@@ -40,6 +37,12 @@ namespace BetterSL
 
         [Description("SCP 049's damage resistence? (default is 20 in vanilla)")]
         public int Scp049Armour { get; set; } = 35;
+
+        [Description("How many times can SCP 049 revive a instance of SCP 049-2?")]
+        public int Scp049Max0492Ressurection { get; set; } = 2;
+
+        [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
+        public float Scp0492BloodlustMaxSpeed { get; set; } = 5.4f;
 
         [Description("How much AP should 079 spawn with?")]
         public int Scp079SpawnAp { get; set; } = 0;
@@ -73,9 +76,6 @@ namespace BetterSL
 
         [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
         public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
-
-        [Description("How many times can SCP 049 ressurct 049-2 instances?")]
-        public int Scp049Max0492Ressurection { get; set; } = 1;
 
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;

@@ -8,7 +8,7 @@ namespace BetterSL.Patches.Scp0492
     {
         public static void Postfix(ZombieMovementModule __instance, ref float __result)
         {
-            __result = Plugin.GetConfig().LobotomizedBloodlustMaxSpeed;
+            __result = Plugin.GetConfig().Scp0492BloodlustMaxSpeed;
         }
     }
 }

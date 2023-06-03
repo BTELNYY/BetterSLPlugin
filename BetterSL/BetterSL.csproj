@@ -104,7 +104,6 @@
     <Compile Include="EventHandlers\DimensionBodyHandler.cs" />
     <Compile Include="EventHandlers\ConsoleCommandHandler.cs" />
     <Compile Include="EventHandlers\Scp079DoorHandler.cs" />
-    <Compile Include="EventHandlers\Scp0492SpawnHandler.cs" />
     <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Patches\Scp106\Scp106DoorPatch.cs" />
     <Compile Include="Patches\Scp106\Scp106AttackPatch.cs" />

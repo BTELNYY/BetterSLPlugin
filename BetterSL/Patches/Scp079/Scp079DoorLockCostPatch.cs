@@ -17,14 +17,16 @@ namespace BetterSL.Patches.Scp079
     [HarmonyPatch(typeof(Scp079DoorLockChanger), "SetDoorLock")]
     public class Scp079DoorLockCostPatch
     {
-        static bool CoroutineRunning = false;
+        public static bool CoroutineRunning = false;
+        public static CoroutineHandle Handle;
 
         public static void Postfix(Scp079DoorLockChanger __instance, ref bool __result)
         {
-            if(__result && !CoroutineRunning)
+            if(__result && !CoroutineRunning && !Handle.IsRunning)
             {
-                Timing.CallPeriodically(float.PositiveInfinity, 1f, () =>
+                Handle = Timing.CallPeriodically(float.PositiveInfinity, 1f, () =>
                 {
+                    CoroutineRunning = true;
                     if(Scp079DoorHandler.DoorsLocked == 0)
                     {
                         return;

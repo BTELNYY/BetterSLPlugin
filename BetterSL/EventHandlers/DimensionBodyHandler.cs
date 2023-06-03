@@ -38,6 +38,7 @@ namespace BetterSL.EventHandlers
                 Log.Debug("Invalid translation ID!");
                 return;
             }
+            Log.Debug("Adding to ragdoll queue!");
             RagdollQueue.Add(rag);
             if (!ThreadStarted || Handler == null || !Handler.IsRunning)
             {
