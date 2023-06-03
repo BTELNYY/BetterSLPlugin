@@ -16,7 +16,7 @@ using MapGeneration;
 using PlayerRoles;
 using BetterSL.Managers;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Generic
 {
     public class DimensionBodyHandler
     {

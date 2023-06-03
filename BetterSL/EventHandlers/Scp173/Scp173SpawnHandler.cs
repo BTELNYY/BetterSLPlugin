@@ -13,7 +13,7 @@ using PlayerRoles.FirstPersonControl;
 using MapGeneration;
 using MEC;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Scp173
 {
     public class Scp173SpawnHandler
     {

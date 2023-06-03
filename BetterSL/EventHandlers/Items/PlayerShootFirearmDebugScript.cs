@@ -3,7 +3,7 @@ using MapGeneration;
 using PluginAPI.Core;
 using UnityEngine;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Items
 {
     public class PlayerShootFirearmDebugScript
     {

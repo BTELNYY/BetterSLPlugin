@@ -11,6 +11,7 @@ using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using BetterSL.EventHandlers.Scp079;
 
 namespace BetterSL.Patches.Scp079
 {

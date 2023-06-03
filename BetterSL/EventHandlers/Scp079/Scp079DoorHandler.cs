@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Enums;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Scp079
 {
     public class Scp079DoorHandler
     {

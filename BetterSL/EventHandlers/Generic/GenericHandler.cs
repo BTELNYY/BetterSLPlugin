@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Enums;
+using BetterSL.EventHandlers.Scp079;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Generic
 {
     public class GenericHandler
     {
@@ -14,9 +15,9 @@ namespace BetterSL.EventHandlers
         public static void OnRoundEnd()
         {
             DimensionBodyHandler.RagdollQueue.Clear();
-            Scp079DoorHandler.DoorsLocked = 0;
             DimensionBodyHandler.ThreadStarted = false;
-            DimensionBodyHandler.Handler.IsRunning = false;;
+            DimensionBodyHandler.Handler.IsRunning = false;
+            Scp079DoorHandler.DoorsLocked = 0;
         }
     }
 }

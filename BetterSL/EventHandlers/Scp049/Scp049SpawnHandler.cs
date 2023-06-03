@@ -19,7 +19,7 @@ using InventorySystem.Items;
 using Mirror;
 using InventorySystem.Items.Pickups;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Scp049
 {
     public class Scp049SpawnHandler
     {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using Interactables.Interobjects;
 using BetterSL.Managers;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Generic
 {
     public class ConsoleCommandHandler
     {

@@ -8,7 +8,7 @@ using PlayerRoles.PlayableScps.Scp079;
 using PluginAPI;
 using PluginAPI.Core;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Scp079
 {
     public class Scp079Handler
     {

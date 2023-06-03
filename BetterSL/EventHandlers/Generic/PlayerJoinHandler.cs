@@ -8,7 +8,7 @@ using PluginAPI.Core.Attributes;
 using PluginAPI.Core;
 using PluginAPI.Helpers;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Generic
 {
     public class PlayerJoinHandler
     {

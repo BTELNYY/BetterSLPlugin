@@ -8,7 +8,7 @@ using InventorySystem.Items.Usables;
 using PlayerStatsSystem;
 using PluginAPI.Core;
 
-namespace BetterSL.EventHandlers
+namespace BetterSL.EventHandlers.Items
 {
     public class Scp500UseHandler
     {

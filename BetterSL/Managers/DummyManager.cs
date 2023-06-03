@@ -267,7 +267,7 @@ namespace BetterSL.Managers
                     AccessTools.Field(typeof(CharacterClassManager), "InstanceMode").SetValue(hubPlayer.characterClassManager, ClientInstanceMode.Unverified);
                     //hubPlayer.characterClassManager.InstanceMode = ClientInstanceMode.Unverified;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     
                 }

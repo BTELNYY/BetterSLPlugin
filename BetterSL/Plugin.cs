@@ -11,6 +11,7 @@ using PluginAPI.Helpers;
 using HarmonyLib;
 using BetterSL.EventHandlers;
 using PlayerRoles.Ragdolls;
+using BetterSL.EventHandlers.Generic;
 
 namespace BetterSL
 {

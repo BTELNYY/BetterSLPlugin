@@ -100,10 +100,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventHandlers\GenericHandler.cs" />
-    <Compile Include="EventHandlers\DimensionBodyHandler.cs" />
-    <Compile Include="EventHandlers\ConsoleCommandHandler.cs" />
-    <Compile Include="EventHandlers\Scp079DoorHandler.cs" />
+    <Compile Include="EventHandlers\Generic\GenericHandler.cs" />
+    <Compile Include="EventHandlers\Generic\DimensionBodyHandler.cs" />
+    <Compile Include="EventHandlers\Generic\ConsoleCommandHandler.cs" />
+    <Compile Include="EventHandlers\Scp079\Scp079DoorHandler.cs" />
     <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Patches\Scp106\Scp106DoorPatch.cs" />
     <Compile Include="Patches\Scp106\Scp106AttackPatch.cs" />
@@ -114,12 +114,12 @@
     <Compile Include="Resources\FakeConnection.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Config.cs" />
-    <Compile Include="EventHandlers\Scp049SpawnHandler.cs" />
-    <Compile Include="EventHandlers\Scp173SpawnHandler.cs" />
-    <Compile Include="EventHandlers\Scp500UseHandler.cs" />
-    <Compile Include="EventHandlers\PlayerShootFirearmDebugScript.cs" />
-    <Compile Include="EventHandlers\Scp079Handler.cs" />
-    <Compile Include="EventHandlers\PlayerJoinHandler.cs" />
+    <Compile Include="EventHandlers\Scp049\Scp049SpawnHandler.cs" />
+    <Compile Include="EventHandlers\Scp173\Scp173SpawnHandler.cs" />
+    <Compile Include="EventHandlers\Items\Scp500UseHandler.cs" />
+    <Compile Include="EventHandlers\Items\PlayerShootFirearmDebugScript.cs" />
+    <Compile Include="EventHandlers\Scp079\Scp079Handler.cs" />
+    <Compile Include="EventHandlers\Generic\PlayerJoinHandler.cs" />
     <Compile Include="Patches\Scp049\Scp049ChaseAbilityPatch.cs" />
     <Compile Include="Patches\Scp173\Scp173BreakneckSpeedsPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079CooldownPatch.cs" />
