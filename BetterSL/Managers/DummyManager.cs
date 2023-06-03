@@ -18,6 +18,7 @@ using BetterSL.Resources;
 using HarmonyLib;
 using Scp914.Processors;
 using PlayerStatsSystem;
+using InventorySystem;
 
 namespace BetterSL.Managers
 {
@@ -327,6 +328,12 @@ namespace BetterSL.Managers
             var dummy = SpawnDummy(spawnPosition, true, ragdoll.Info.Nickname, ragdoll.Info.RoleType);
             DamageHandlerBase damageHandlerBase = ragdoll.Info.Handler;
             CustomReasonDamageHandler un = new CustomReasonDamageHandler("Decayed in Pocket Dimension", -1f);
+            dummy.inventory.UserInventory.ReserveAmmo.Clear();
+            InventoryInfo userInventory = dummy.inventory.UserInventory;
+            while (userInventory.Items.Count > 0)
+            {
+                dummy.inventory.ServerRemoveItem(userInventory.Items.ElementAt(0).Key, null);
+            }
             Timing.CallDelayed(0.3f, () =>
             {
                 dummy.playerStats.DealDamage(un);
@@ -335,7 +342,16 @@ namespace BetterSL.Managers
             });
         }
 
-
+        public static void SpawnRagdoll(string name, Vector3 position, RoleTypeId role, DeathTranslation translation)
+        {
+            ReferenceHub dummy = SpawnDummy(position, false, name, role);
+            UniversalDamageHandler un = new UniversalDamageHandler(-1, translation);
+            Timing.CallDelayed(0.4f, () => 
+            {
+                dummy.playerStats.DealDamage(un);
+            });
+            NetworkServer.Destroy(dummy.gameObject);
+        }
 
 
         [PluginEvent(ServerEventType.PlayerDeath)]

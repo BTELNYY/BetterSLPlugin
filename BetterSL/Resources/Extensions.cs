@@ -1,4 +1,6 @@
 ﻿using Interactables.Interobjects;
+using Interactables.Interobjects.DoorUtils;
+using MapGeneration;
 using PluginAPI.Core;
 using System;
 using System.Collections.Generic;
@@ -52,6 +54,30 @@ namespace BetterSL.Resources
                 if (chamber.WorldspaceBounds.Contains(position))
                 {
                     return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool InDoor(Vector3 position)
+        {
+            RoomIdentifier room  = RoomIdUtils.RoomAtPositionRaycasts(position);
+            if(room == null)
+            {
+                Log.Warning("Room is null!");
+            }
+            foreach(DoorVariant var in DoorVariant.DoorsByRoom[room])
+            {
+                Transform transform = var.transform;
+                BoxCollider collider;
+                while (!transform.TryGetComponent<BoxCollider>(out collider))
+                {
+                    transform = var.transform.parent;
+                    if (collider != null)
+                    {
+                        Log.Debug("Got Collider!");
+                        return collider.bounds.Contains(position);
+                    }
                 }
             }
             return false;

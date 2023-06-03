@@ -14,6 +14,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using PluginAPI.Core;
+using BetterSL.Resources;
 
 namespace BetterSL.Patches.Scp106
 {
@@ -54,6 +55,12 @@ namespace BetterSL.Patches.Scp106
                     sendcooldownmethod.Invoke(__instance, missCooldown);
                     return false;
                 }
+                //if (Extensions.InDoor(__instance.Owner.PlayerCameraReference.position))
+                //{
+                //    object[] missCooldown = { AccessTools.Field(typeof(Scp106Attack), "_missCooldown").GetValue(__instance) };
+                //    sendcooldownmethod.Invoke(__instance, missCooldown);
+                //    return false;
+                //}
                 //Log.Debug("Passed dot over check!");
             }
             DamageHandlerBase handler = new ScpDamageHandler(__instance.Owner, Plugin.GetConfig().Scp106AttackDamage, DeathTranslations.PocketDecay);
@@ -61,7 +68,7 @@ namespace BetterSL.Patches.Scp106
             object[] cooldown = { hitCooldown };
             sendcooldownmethod.Invoke(__instance, cooldown);
             __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp106Vigor>(out var vigor);
-            vigor.VigorAmount += 0.3f;
+            //vigor.VigorAmount += Plugin.GetConfig().Scp106OnKillVigor;
             AccessTools.Method(typeof(Scp106Attack), "ReduceSinkholeCooldown").Invoke(__instance, null);
             Hitmarker.SendHitmarker(__instance.Owner, 1f);
             if(target is null)
@@ -86,10 +93,10 @@ namespace BetterSL.Patches.Scp106
                 //Log.Debug("Applying damage over time!");
                 vigor.VigorAmount += Plugin.GetConfig().Scp106OnAttackVigor;
                 playerEffectsController.EnableEffect<Traumatized>(0f, false);
-                float damage = 3.333f;
+                float damage = Plugin.GetConfig().Scp106AttackDamageOverTimeDamage;
                 target.playerStats.DealDamage(handler);
                 DamageHandlerBase damageovertime = new ScpDamageHandler(__instance.Owner, damage, DeathTranslations.PocketDecay);
-                Timing.CallPeriodically(Plugin.GetConfig().Scp106AttackDamageOverTimeDuration, 1f, () => 
+                Timing.CallPeriodically(Plugin.GetConfig().Scp106AttackDamageOverTimeDuration, Plugin.GetConfig().Scp106TickEvery, () => 
                 {
                     if ((target.playerStats.StatModules[0].CurValue - damage) <= 0)
                     {

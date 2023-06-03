@@ -18,7 +18,7 @@ namespace BetterSL
         public float Scp106MaxHP { get; set; } = 1800;
 
         [Description("How much damage should SCP 106 inflict on hit?")]
-        public float Scp106AttackDamage { get; set; } = 35;
+        public float Scp106AttackDamage { get; set; } = 45;
 
         [Description("How much vigor should SCP 106 get upon killing someone?")]
         public float Scp106OnKillVigor { get; set; } = 0.2f;
@@ -27,7 +27,13 @@ namespace BetterSL
         public float Scp106OnAttackVigor { get; set; } = 0.3f;
 
         [Description("How long (in seconds) should SCP 106's damage over time last?")]
-        public float Scp106AttackDamageOverTimeDuration { get; set; } = 6f;
+        public float Scp106AttackDamageOverTimeDuration { get; set; } = 4f;
+
+        [Description("How much should SCP 106's damage over time attack do per tick?")]
+        public float Scp106AttackDamageOverTimeDamage { get; set; } = 5f;
+
+        [Description("How often should the damage from SCP 106 over time effect tick? (seconds)")]
+        public float Scp106TickEvery { get; set; } = 1f;
 
         [Description("Amount of time before a body auto drops from PD")]
         public int Scp106BodyDropDelay { get; set; } = 45;
