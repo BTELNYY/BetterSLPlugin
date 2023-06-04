@@ -28,39 +28,44 @@ namespace BetterSL.EventHandlers.Generic
 
         public static void OnRagdoll(BasicRagdoll ragdoll)
         {
-            Log.Debug("Ragdoll handler called!");
+            //Log.Debug("Ragdoll handler called!");
             BasicRagdoll rag = ragdoll;
             DamageHandlerBase damageHandler = ragdoll.Info.Handler;
             UniversalDamageHandler un = damageHandler as UniversalDamageHandler;
-            Log.Debug("Ready to call delayed body handler!");
+            //Log.Debug("Ready to call delayed body handler!");
             if (un.TranslationId != 7)
             {
-                Log.Debug("Invalid translation ID!");
+                //Log.Debug("Invalid translation ID!");
                 return;
             }
-            Log.Debug("Adding to ragdoll queue!");
+            //Log.Debug("Adding to ragdoll queue!");
             RagdollQueue.Add(rag);
             if (!ThreadStarted || Handler == null || !Handler.IsRunning)
             {
                 ThreadStarted = true;
-                Log.Debug("Starting ragdoll thread..");
+                //Log.Debug("Starting ragdoll thread..");
                 int time = Plugin.GetConfig().Scp106BodyDropDelay;
                 Handler = Timing.CallPeriodically(float.PositiveInfinity, time, () =>
                 {
-                    Log.Debug("Calling Timing!");
+                    //Log.Debug("Calling Timing!");
                     if(RagdollQueue.Count == 0)
                     {
-                        Log.Debug("Empty list");
+                        //Log.Debug("Empty list");
                         return;
                     }
                     BasicRagdoll queueragdoll = RagdollQueue.RandomItem();
-                    Log.Debug("Calling delayed body drop!");
+                    //Log.Debug("Calling delayed body drop!");
                     List<Player> players = Player.GetPlayers();
-                    Log.Debug(players.Count.ToString());
+                    //Log.Debug(players.Count.ToString());
                     List<Player> checkedPlayers = players.Where(p => !p.IsSCP && p.IsAlive && !BetterSL.Resources.Extensions.InElevator(p.Position) && RoomIdUtils.RoomAtPositionRaycasts(p.Position) != null).ToList();
-                    Log.Debug(checkedPlayers.Count.ToString());
+                    //Log.Debug(checkedPlayers.Count.ToString());
+                    if(checkedPlayers.Count <= 0) 
+                    {
+                        //No valid players, try again next time.
+                        return;
+                    }
                     Player chosenPlayer = checkedPlayers.RandomItem();
-                    Log.Debug(chosenPlayer.Nickname);
+                    //Log.Debug(chosenPlayer.Nickname);
                     Vector3 raycastPos = chosenPlayer.Camera.position;
                     raycastPos.y += 0.5f;
                     Vector3 teleportPos;

@@ -12,7 +12,8 @@ using Interactables.Interobjects.DoorUtils;
 
 namespace BetterSL.Patches.Scp106
 {
-    [HarmonyPatch(typeof(Scp106MovementModule), "ProcessCollider")]
+    //Broken, do not enable, I will if needed -btelnyy
+    //[HarmonyPatch(typeof(Scp106MovementModule), "ProcessCollider")]
     public class Scp106DoorPatch
     {
         public static bool InDoor = false;

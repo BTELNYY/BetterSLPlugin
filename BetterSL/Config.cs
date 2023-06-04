@@ -65,6 +65,9 @@ namespace BetterSL
         [Description("How much AP should SCP 079 lose when locking doors per tier?")]
         public float[] Scp079DoorLockCostPercent { get; set; } = { 0.2f, 0.17f, 0.15f, 0.12f, 0.1f };
 
+        [Description("Limit of players 939 can damage with one claw swipe")]
+        public int Scp939MaxAoePlayerHits { get; set; } = 2;
+
         [Description("SCP 939's base claw cooldown (vanilla is 0.6)")]
         public float Scp939ClawCooldown { get; set; } = 0.7f;
 

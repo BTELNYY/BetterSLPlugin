@@ -55,13 +55,14 @@ namespace BetterSL.Patches.Scp106
                     sendcooldownmethod.Invoke(__instance, missCooldown);
                     return false;
                 }
-                //if (Extensions.InDoor(__instance.Owner.PlayerCameraReference.position))
-                //{
-                //    object[] missCooldown = { AccessTools.Field(typeof(Scp106Attack), "_missCooldown").GetValue(__instance) };
-                //    sendcooldownmethod.Invoke(__instance, missCooldown);
-                //    return false;
-                //}
-                //Log.Debug("Passed dot over check!");
+                
+                if (Extensions.Scp106InDoor(__instance.ScpRole.CameraPosition, (Scp106MovementModule)__instance.ScpRole.FpcModule))
+                {
+                    object[] missCooldown = { AccessTools.Field(typeof(Scp106Attack), "_missCooldown").GetValue(__instance) };
+                    sendcooldownmethod.Invoke(__instance, missCooldown);
+                    return false;
+                }
+                Log.Debug("Passed dot over check!");
             }
             DamageHandlerBase handler = new ScpDamageHandler(__instance.Owner, Plugin.GetConfig().Scp106AttackDamage, DeathTranslations.PocketDecay);
             float hitCooldown = (float)AccessTools.Field(typeof(Scp106Attack), "_hitCooldown").GetValue(__instance);

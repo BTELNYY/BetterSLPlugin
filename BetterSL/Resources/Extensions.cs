@@ -1,6 +1,8 @@
-﻿using Interactables.Interobjects;
+﻿using HarmonyLib;
+using Interactables.Interobjects;
 using Interactables.Interobjects.DoorUtils;
 using MapGeneration;
+using PlayerRoles.PlayableScps.Scp106;
 using PluginAPI.Core;
 using System;
 using System.Collections.Generic;
@@ -59,27 +61,19 @@ namespace BetterSL.Resources
             return false;
         }
 
-        public static bool InDoor(Vector3 position)
+        public static bool Scp106InDoor(Vector3 position, Scp106MovementModule reference)
         {
-            RoomIdentifier room  = RoomIdUtils.RoomAtPositionRaycasts(position);
-            if(room == null)
+            HashSet<Collider> colliders = (HashSet<Collider>)AccessTools.Field(typeof(Scp106MovementModule), "EnabledColliders").GetValue(reference);
+            foreach (var collider in colliders)
             {
-                Log.Warning("Room is null!");
-            }
-            foreach(DoorVariant var in DoorVariant.DoorsByRoom[room])
-            {
-                Transform transform = var.transform;
-                BoxCollider collider;
-                while (!transform.TryGetComponent<BoxCollider>(out collider))
+                if (collider.bounds.Contains(position))
                 {
-                    transform = var.transform.parent;
-                    if (collider != null)
-                    {
-                        Log.Debug("Got Collider!");
-                        return collider.bounds.Contains(position);
-                    }
+                    Log.Debug("Found collider with position in it!");
+                    return true;
                 }
+                Log.Debug("Position in collider does not exist!");
             }
+            Log.Debug("Did not find collider with position in it.");
             return false;
         }
     }

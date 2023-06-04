@@ -4,7 +4,7 @@ using PlayerRoles.PlayableScps;
 namespace BetterSL.Patches.Scp106
 {
     [HarmonyPatch(typeof(FpcStandardScp), nameof(FpcStandardScp.MaxHealth), MethodType.Getter)]
-    public class Scp106Health
+    public class Scp106HealthPatch
     {
         static void Postfix(FpcStandardScp __instance, ref float __result)
         {

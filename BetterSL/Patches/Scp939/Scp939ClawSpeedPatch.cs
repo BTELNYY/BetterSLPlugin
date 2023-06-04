@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BetterSL.Patches.Scp939
 {
     [HarmonyPatch(typeof(Scp939ClawAbility), "BaseCooldown", MethodType.Getter)]
-    public class Scp939ClawPatch
+    public class Scp939ClawSpeedPatch
     {
         public static void Postfix(Scp939ClawAbility __instance, ref float __result) 
         {
