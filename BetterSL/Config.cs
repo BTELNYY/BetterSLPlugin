@@ -44,6 +44,9 @@ namespace BetterSL
         [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
         public float Scp0492BloodlustMaxSpeed { get; set; } = 5.4f;
 
+        [Description("What message should be sent to all SCPs when a generator is turned on and SCP 079 pings it?")]
+        public string Scp079GeneratorAlertMessage { get; set; } = "<color=purple>SCP 079</color> has pinged a generator in {room}";
+        
         [Description("How much AP should 079 spawn with?")]
         public int Scp079SpawnAp { get; set; } = 0;
 

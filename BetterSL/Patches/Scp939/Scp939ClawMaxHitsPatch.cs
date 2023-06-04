@@ -19,37 +19,37 @@ namespace BetterSL.Patches.Scp939
     {
         public static bool Prefix(ScpAttackAbilityBase<Scp939Role> __instance)
         {
-            Log.Debug("Getting vars!");
+            //Log.Debug("Getting vars!");
             float detectionRadius = (float)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "_detectionRadius").GetValue(__instance);
-            Log.Debug("Getting detections non alloc!");
+            //Log.Debug("Getting detections non alloc!");
             Collider[] detectionsNonAlloc = (Collider[])AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "DetectionsNonAlloc").GetValue(__instance);
-            Log.Debug("Getting detectionMask!");
+            //Log.Debug("Getting detectionMask!");
             CachedLayerMask detectionMask = (CachedLayerMask)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "DetectionMask").GetValue(__instance);
-            Log.Debug("Getting blockerMask!");
+            //Log.Debug("Getting blockerMask!");
             CachedLayerMask blockerMask = (CachedLayerMask)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "BlockerMask").GetValue(__instance);
-            Log.Debug("Getting syncAttack!");
+            //Log.Debug("Getting syncAttack!");
             AttackResult syncAttack = (AttackResult)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "_syncAttack").GetValue(__instance);
-            Log.Debug("Getting targettedPlayers!");
+            //Log.Debug("Getting targettedPlayers!");
             HashSet<ReferenceHub> targettedPlayers = (HashSet<ReferenceHub>)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "TargettedPlayers").GetValue(__instance);
-            Log.Debug("Getting damageHandler");
-            DamageHandlerBase damageHandler = new ScpDamageHandler(__instance.Owner, 40f, DeathTranslations.Scp939Other);
-            Log.Debug("Getting plyCam!");
+            //Log.Debug("Getting damageHandler");
+            Scp939DamageHandler damageHandler = new Scp939DamageHandler(__instance.ScpRole, Scp939DamageType.Claw);
+            //Log.Debug("Getting plyCam!");
             Transform plyCam = __instance.Owner.PlayerCameraReference;
-            Log.Debug("Getting detection offset!");
+            //Log.Debug("Getting detection offset!");
             float detectionOffset = (float)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "_detectionOffset").GetValue(__instance);
             Vector3 overlapSphereOrigin = plyCam.position + plyCam.forward * detectionOffset;
-            Log.Debug("Getting methods!");
+            //Log.Debug("Getting methods!");
             MethodInfo onDestructibleDamaged = AccessTools.Method(typeof(ScpAttackAbilityBase<Scp939Role>), "OnDestructibleDamaged");
             Type[] types = { typeof(bool) };
-            MethodInfo serverSendRpc = AccessTools.Method(typeof(ScpSubroutineBase), "ServerSendRpc", types);
-            Log.Debug("Got vars!");
+            MethodInfo serverSendRpc = AccessTools.Method(typeof(ScpAttackAbilityBase<Scp939Role>), "ServerSendRpc", types);
+            //Log.Debug("Got vars!");
             int num = Physics.OverlapSphereNonAlloc(overlapSphereOrigin, detectionRadius, detectionsNonAlloc, detectionMask);
             syncAttack = AttackResult.None;
-            Log.Debug("Got intersects!");
+            //Log.Debug("Got intersects!");
             int counter = 0;
             for (int i = 0; i < num; i++)
             {
-                Log.Debug("iterating!");
+                //Log.Debug("iterating!");
                 IDestructible destructible;
                 if (detectionsNonAlloc[i].TryGetComponent<IDestructible>(out destructible) && !Physics.Linecast(plyCam.position, destructible.CenterOfMass, blockerMask))
                 {

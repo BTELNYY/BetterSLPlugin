@@ -105,6 +105,7 @@
     <Compile Include="EventHandlers\Generic\ConsoleCommandHandler.cs" />
     <Compile Include="EventHandlers\Scp079\Scp079DoorHandler.cs" />
     <Compile Include="Managers\DummyManager.cs" />
+    <Compile Include="Patches\Scp079\Scp079PingGeneratorPatch.cs" />
     <Compile Include="Patches\Scp106\Scp106DoorPatch.cs" />
     <Compile Include="Patches\Scp106\Scp106AttackPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079DoorLockCostPatch.cs" />

@@ -2,6 +2,7 @@
 using Interactables.Interobjects;
 using Interactables.Interobjects.DoorUtils;
 using MapGeneration;
+using PlayerRoles;
 using PlayerRoles.PlayableScps.Scp106;
 using PluginAPI.Core;
 using System;
@@ -75,6 +76,11 @@ namespace BetterSL.Resources
             }
             Log.Debug("Did not find collider with position in it.");
             return false;
+        }
+
+        public static List<ReferenceHub> GetScpTeam()
+        {
+            return ReferenceHub.AllHubs.Where(x => x.IsSCP()).ToList();
         }
     }
 }
