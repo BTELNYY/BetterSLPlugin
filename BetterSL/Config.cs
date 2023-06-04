@@ -46,7 +46,10 @@ namespace BetterSL
 
         [Description("What message should be sent to all SCPs when a generator is turned on and SCP 079 pings it?")]
         public string Scp079GeneratorAlertMessage { get; set; } = "<color=purple>SCP 079</color> has pinged a generator in {room}";
-        
+
+        [Description("What range should the SCP 079 Ping for a generator have?")]
+        public float Scp079GeneratorPingRange { get; set; } = 25f;
+
         [Description("How much AP should 079 spawn with?")]
         public int Scp079SpawnAp { get; set; } = 0;
 
