@@ -10,7 +10,7 @@ namespace BetterSL.Patches.Scp106
         {
             if (__instance.RoleTypeId == PlayerRoles.RoleTypeId.Scp106)
             {
-                __result = Plugin.instance.config.Scp106MaxHP;
+                __result = Plugin.instance.config.Scp106MaxHp;
             }
         }
     }

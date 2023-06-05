@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using PlayerRoles;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Security.Policy;
 
 namespace BetterSL
@@ -12,7 +14,7 @@ namespace BetterSL
         public float Scp096SwingDamage { get; set; } = 65f;
 
         [Description("SCP 106's starting health")]
-        public float Scp106MaxHP { get; set; } = 1800;
+        public float Scp106MaxHp { get; set; } = 1800;
 
         [Description("How much damage should SCP 106 inflict on hit?")]
         public float Scp106AttackDamage { get; set; } = 45;
@@ -49,6 +51,17 @@ namespace BetterSL
 
         [Description("What range should the SCP 079 Ping for a generator have?")]
         public float Scp079GeneratorPingRange { get; set; } = 25f;
+
+        [Description("Termination reward multipliers for SCP 079.")]
+        public Dictionary<Team, float> Scp079TerminationRewardMultipliers { get; set; } = new Dictionary<Team, float>{ 
+            [Team.ClassD] = 0.5f,
+            [Team.Scientists] = 0.5f,
+            [Team.FoundationForces] = 1f,
+            [Team.ChaosInsurgency] = 1f,
+            [Team.OtherAlive] = 1f,
+            [Team.SCPs] = 1f,
+            [Team.Dead] = 1f
+        };
 
         [Description("How much AP should 079 spawn with?")]
         public int Scp079SpawnAp { get; set; } = 0;
