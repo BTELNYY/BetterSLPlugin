@@ -23,12 +23,13 @@ namespace BetterSL.Patches.Scp939
             HashSet<ReferenceHub> targettedPlayers = (HashSet<ReferenceHub>)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "TargettedPlayers").GetValue(__instance);
             while(targettedPlayers.Count > Plugin.GetConfig().Scp939MaxAoePlayerHits)
             {
-                System.Random rand = new System.Random();
-                int randomNumber = rand.Next(0, targettedPlayers.Count);
-                ReferenceHub hubtoremove = targettedPlayers.ToList()[randomNumber];
-                targettedPlayers.Remove(hubtoremove);
+                //System.Random rand = new System.Random();
+                //int randomNumber = rand.Next(0, targettedPlayers.Count);
+                //ReferenceHub hubtoremove = targettedPlayers.ToList()[randomNumber];
+                //targettedPlayers.Remove(hubtoremove);
                 //uncomment this and remove above to use Last() method! - btelnyy
-                //targettedPlayers.Remove(targettedPlayers.Last());
+                //Done, onion man suggested.
+                targettedPlayers.Remove(targettedPlayers.Last());
             }
             return true;
         }
