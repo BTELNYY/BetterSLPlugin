@@ -103,7 +103,7 @@ namespace BetterSL
         public bool Scp500GivesStamina { get; set; } = true;
 
         [Description("Should a facility manager keycard spawn in 049's room?")]
-        public bool FacilityManagerSpawnsIn049 { get; set; } = true;    
+        public bool FacilityManagerSpawnsIn049 { get; set; } = false;    
 
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
