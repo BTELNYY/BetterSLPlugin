@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Enums;
 using BetterSL.EventHandlers.Scp079;
+using Mirror;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -18,6 +19,8 @@ namespace BetterSL.EventHandlers.Generic
             DimensionBodyHandler.ThreadStarted = false;
             DimensionBodyHandler.Handler.IsRunning = false;
             Scp079DoorHandler.DoorsLocked = 0;
+            ChaosTargetHandler.ChaosTotal = 0;
+            ChaosTargetHandler.ChaosAlive = 0;
         }
     }
 }

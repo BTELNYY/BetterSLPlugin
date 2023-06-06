@@ -82,5 +82,10 @@ namespace BetterSL.Resources
         {
             return ReferenceHub.AllHubs.Where(x => x.IsSCP()).ToList();
         }
+
+        public static List<ReferenceHub> GetByTeam(Team team)
+        {
+            return ReferenceHub.AllHubs.Where(x => x.roleManager.CurrentRole.Team == team).ToList();
+        }
     }
 }

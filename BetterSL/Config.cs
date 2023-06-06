@@ -9,7 +9,16 @@ namespace BetterSL
     {
         [Description("Enable the plugin?")]
         public bool PluginEnabled { get; set; } = true;
-        
+
+        [Description("How much percent of all chaos must die in order for the round to end?")]
+        public float ChaosDeadPercent { get; set; } = 0.5f;
+
+        [Description("Should SCP 500 give you back all your stamina on use?")]
+        public bool Scp500GivesStamina { get; set; } = true;
+
+        [Description("Should a facility manager keycard spawn in 049's room?")]
+        public bool FacilityManagerSpawnsIn049 { get; set; } = false;
+
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
 
@@ -98,12 +107,6 @@ namespace BetterSL
 
         [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
         public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
-
-        [Description("Should SCP 500 give you back all your stamina on use?")]
-        public bool Scp500GivesStamina { get; set; } = true;
-
-        [Description("Should a facility manager keycard spawn in 049's room?")]
-        public bool FacilityManagerSpawnsIn049 { get; set; } = false;    
 
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
