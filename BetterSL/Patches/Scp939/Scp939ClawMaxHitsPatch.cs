@@ -12,6 +12,7 @@ using UnityEngine;
 using PluginAPI.Core;
 using PlayerRoles.PlayableScps.Subroutines;
 using System.Runtime.CompilerServices;
+using PlayerRoles;
 
 namespace BetterSL.Patches.Scp939
 {
@@ -20,6 +21,10 @@ namespace BetterSL.Patches.Scp939
     {
         public static bool Prefix(ScpAttackAbilityBase<Scp939Role> __instance)
         {
+            if(__instance.Owner.roleManager.CurrentRole.RoleTypeId != RoleTypeId.Scp939)
+            {
+                return true;
+            }
             HashSet<ReferenceHub> targettedPlayers = (HashSet<ReferenceHub>)AccessTools.Field(typeof(ScpAttackAbilityBase<Scp939Role>), "TargettedPlayers").GetValue(__instance);
             while(targettedPlayers.Count > Plugin.GetConfig().Scp939MaxAoePlayerHits)
             {
