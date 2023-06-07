@@ -106,7 +106,6 @@
     <Compile Include="EventHandlers\Generic\ConsoleCommandHandler.cs" />
     <Compile Include="EventHandlers\Scp079\Scp079DoorHandler.cs" />
     <Compile Include="Managers\DummyManager.cs" />
-    <Compile Include="Patches\Generic\RoundEndSummaryPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079TerminationRewardPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079GeneratorPingRangePatch.cs" />
     <Compile Include="Patches\Scp079\Scp079PingGeneratorPatch.cs" />

@@ -87,5 +87,14 @@ namespace BetterSL.Resources
         {
             return ReferenceHub.AllHubs.Where(x => x.roleManager.CurrentRole.Team == team).ToList();
         }
+
+        public static void BroadcastToTeam(Team team, string message)
+        {
+            List<ReferenceHub> hubs = GetByTeam(team);
+            foreach (var hub in hubs)
+            {
+                Server.Broadcast.TargetAddElement(hub.connectionToClient, message, 5, Broadcast.BroadcastFlags.Normal);
+            }
+        }
     }
 }

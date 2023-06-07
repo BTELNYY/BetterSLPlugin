@@ -13,6 +13,9 @@ namespace BetterSL
         [Description("How much percent of all chaos must die in order for the round to end?")]
         public float ChaosDeadPercent { get; set; } = 0.5f;
 
+        [Description("Broadcast to all SCPs regarding chaos being targets")]
+        public string ChaosTargetsBroadcast { get; set; } = $"You must kill alive chaos to end the round!";
+
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 
@@ -51,6 +54,9 @@ namespace BetterSL
 
         [Description("How many times can SCP 049 revive a instance of SCP 049-2?")]
         public int Scp049Max0492Ressurection { get; set; } = 2;
+
+        [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
+        public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
 
         [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
         public float Scp0492BloodlustMaxSpeed { get; set; } = 5.4f;
@@ -104,9 +110,6 @@ namespace BetterSL
 
         [Description("Message to show to 939 players who try to use gas in elevators")]
         public string Scp939GasInElevatorMessage { get; set; } = "You can't deploy amnestic cloud in elevators!";
-
-        [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
-        public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
 
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";

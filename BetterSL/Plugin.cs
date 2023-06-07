@@ -52,10 +52,7 @@ namespace BetterSL
             harmony.PatchAll();
             Log.Info("BetterSL v" + PluginVersion + " loaded.");
             RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
-            StreamWriter streamWriter = new StreamWriter(Console.OpenStandardOutput());
-            TextWriter error = new StreamWriter(Console.OpenStandardError());
-            Console.SetOut(streamWriter);
-            Console.SetError(error);
+            
         }
 
         [PluginUnload()]

@@ -15,6 +15,7 @@ using Interactables.Interobjects;
 using BetterSL.Managers;
 using UnityEngine;
 using Mirror;
+using MEC;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -32,7 +33,7 @@ namespace BetterSL.EventHandlers.Generic
         //    //if there are less chaos alive then what we need
         //    if((ChaosTotal * Plugin.GetConfig().ChaosDeadPercent) > ChaosAlive)
         //    {
-        //        Log.Debug("Amount of chaos alive is less then needed to end round");
+        //        //Log.Debug("Amount of chaos alive is less then needed to end round");
         //        if(DummySpawned && Dummy != null) 
         //        {
         //            DummySpawned = false;
@@ -49,37 +50,76 @@ namespace BetterSL.EventHandlers.Generic
         //}
 
         [PluginEvent(ServerEventType.TeamRespawn)]
-        public static void ChaosWaveSpawned(SpawnableTeamType team)
+        public void ChaosWaveSpawned(SpawnableTeamType team)
         {
-            Log.Debug("Team respawned!");
-            if(team != SpawnableTeamType.ChaosInsurgency) 
+            Timing.CallDelayed(1f, () =>
             {
-                return;
-            }
-            List<ReferenceHub> chaos = BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency);
-            ChaosTotal = chaos.Count;
-            ChaosAlive = ChaosTotal;
+                //Log.Debug("Team respawned!");
+                if (team != SpawnableTeamType.ChaosInsurgency)
+                {
+                    return;
+                }
+                //Log.Debug("Chaos spawned!");
+                List<ReferenceHub> chaos = BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency);
+                ChaosTotal = chaos.Count;
+                ChaosAlive = ChaosTotal;
+                //Log.Debug($"Alive: {ChaosAlive} Total: {ChaosTotal}");
+                if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent))
+                {
+                    //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
+                    BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
+                    RoundSummary.RoundLock = true;
+                }
+                else
+                {
+                    RoundSummary.RoundLock = false;
+                }
+            });
         }
 
         [PluginEvent(ServerEventType.PlayerDying)]
-        public static void OnPlayerDeath(Player player, Player attacker, DamageHandlerBase damageHandler)
+        public void OnPlayerDeath(Player player, Player attacker, DamageHandlerBase damageHandler)
         {
+            //Log.Debug("Player dying!");
             if(player.Role.GetTeam() != Team.ChaosInsurgency)
             {
                 return;
             }
             ChaosAlive--;
+            //Log.Debug($"Alive: {ChaosAlive} Total: {ChaosTotal}");
+            if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent))
+            {
+                //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
+                RoundSummary.RoundLock = true;
+                BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
+            }
+            else
+            {
+                RoundSummary.RoundLock = false;
+            }
         }
 
         [PluginEvent(ServerEventType.PlayerSpawn)]
-        public static void OnPlayerSpawned(Player player, RoleTypeId role)
+        public void OnPlayerSpawned(Player player, RoleTypeId role)
         {
+            //Log.Debug("Player spawned!");
             if(role != RoleTypeId.ChaosConscript)
             {
                 return;
             }
             ChaosAlive++;
             ChaosTotal++;
+            //Log.Debug($"Alive: {ChaosAlive} Total: {ChaosTotal}");
+            if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent))
+            {
+                //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
+                RoundSummary.RoundLock = true;
+                BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
+            }
+            else
+            {
+                RoundSummary.RoundLock = false;
+            }
         }
     }
 }
