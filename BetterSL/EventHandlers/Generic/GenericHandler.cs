@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Enums;
 using BetterSL.EventHandlers.Scp079;
-using Mirror;
 
 namespace BetterSL.EventHandlers.Generic
 {

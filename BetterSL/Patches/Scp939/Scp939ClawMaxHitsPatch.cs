@@ -13,7 +13,6 @@ using PluginAPI.Core;
 using PlayerRoles.PlayableScps.Subroutines;
 using System.Runtime.CompilerServices;
 using PlayerRoles;
-using Mono.Cecil;
 using PlayerRoles.PlayableScps.Scp049.Zombies;
 
 namespace BetterSL.Patches.Scp939

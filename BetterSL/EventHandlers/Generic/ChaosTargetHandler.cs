@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Core;
 using PluginAPI.Enums;
 using Respawning;
-using Mono.Cecil;
 using PlayerStatsSystem;
 using PlayerRoles;
-using BetterSL.Resources;
-using Interactables.Interobjects;
-using BetterSL.Managers;
-using UnityEngine;
-using Mirror;
 using MEC;
 
 namespace BetterSL.EventHandlers.Generic

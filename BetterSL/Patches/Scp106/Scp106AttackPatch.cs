@@ -62,7 +62,7 @@ namespace BetterSL.Patches.Scp106
                     sendcooldownmethod.Invoke(__instance, missCooldown);
                     return false;
                 }
-                Log.Debug("Passed dot over check!");
+                //Log.Debug("Passed dot over check!");
             }
             DamageHandlerBase handler = new ScpDamageHandler(__instance.Owner, Plugin.GetConfig().Scp106AttackDamage, DeathTranslations.PocketDecay);
             float hitCooldown = (float)AccessTools.Field(typeof(Scp106Attack), "_hitCooldown").GetValue(__instance);
