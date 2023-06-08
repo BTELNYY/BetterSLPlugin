@@ -101,7 +101,7 @@ namespace BetterSL.EventHandlers.Generic
             ChaosAlive++;
             ChaosTotal++;
             //Log.Debug($"Alive: {ChaosAlive} Total: {ChaosTotal}");
-            if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent))
+            if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent) || ChaosTotal == 1)
             {
                 //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
                 RoundSummary.RoundLock = true;

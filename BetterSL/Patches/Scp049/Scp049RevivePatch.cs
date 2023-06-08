@@ -7,30 +7,34 @@ using System.Text;
 using System.Threading.Tasks;
 using BetterSL.EventHandlers;
 using PluginAPI.Core;
+using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 namespace BetterSL.Patches.Scp049
 {
     [HarmonyPatch(typeof(Scp049ResurrectAbility), "ServerValidateBegin")]
     public class Scp049RevivePatch
     {
-        public static bool Prefix(Scp049ResurrectAbility __instance, ref byte __result, BasicRagdoll ragdoll)
+        public static void Postfix(Scp049ResurrectAbility __instance, ref byte __result, BasicRagdoll ragdoll)
         {
-            //temp fix
-            //__result = 3;
-            //return false;
-            int resurrectionsNumber = Scp049ResurrectAbility.GetResurrectionsNumber(ragdoll.Info.OwnerHub);
-            if (resurrectionsNumber < Plugin.GetConfig().Scp049Max0492Ressurection)
+            try
             {
+                int resurrectionsNumber = Scp049ResurrectAbility.GetResurrectionsNumber(ragdoll.Info.OwnerHub);
+                if(__result == 2)
+                {
+                    return;
+                }
+                if (resurrectionsNumber >= Plugin.GetConfig().Scp049Max0492Ressurection)
+                {
+                    __result = 3;
+                    return;
+                }
                 __result = 0;
-                return false;
-            }
-            if (resurrectionsNumber <= Plugin.GetConfig().Scp049Max0492Ressurection)
+                return;
+            }catch(Exception e)
             {
-                __result = 3;
-                return false;
+                Log.Error(e.ToString());
             }
-            __result = 4;
-            return true;
+            __result = 0;
         }
     }
 }

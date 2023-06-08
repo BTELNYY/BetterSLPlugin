@@ -56,7 +56,7 @@ namespace BetterSL.Patches.Scp106
                     return false;
                 }
                 
-                if (Extensions.Scp106InDoor(__instance.ScpRole.CameraPosition, (Scp106MovementModule)__instance.ScpRole.FpcModule))
+                if (!Plugin.GetConfig().Scp106CanAttackThroughDoors && Extensions.Scp106InDoor(__instance.ScpRole.CameraPosition, (Scp106MovementModule)__instance.ScpRole.FpcModule))
                 {
                     object[] missCooldown = { AccessTools.Field(typeof(Scp106Attack), "_missCooldown").GetValue(__instance) };
                     sendcooldownmethod.Invoke(__instance, missCooldown);

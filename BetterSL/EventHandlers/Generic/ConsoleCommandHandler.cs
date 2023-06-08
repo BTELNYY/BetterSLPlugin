@@ -20,9 +20,15 @@ namespace BetterSL.EventHandlers.Generic
             {
                 return;
             }
-            player.SendConsoleMessage("Nice try.", "red");
-            //player.SendConsoleMessage("Spawning dummy...");
-            //DummyManager.SpawnDummy(player.Camera.position, true);
+            if(Plugin.GetConfig().DummiesEnabled)
+            {
+                player.SendConsoleMessage("Spawning dummy...");
+                DummyManager.SpawnDummy(player.Camera.position, true);
+            }
+            else
+            {
+                player.SendConsoleMessage("Nice try.", "red");
+            }
         }
     }
 }

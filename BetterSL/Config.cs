@@ -10,6 +10,9 @@ namespace BetterSL
         [Description("Enable the plugin?")]
         public bool PluginEnabled { get; set; } = true;
 
+        [Description("Should dummy players be enabled?")]
+        public bool DummiesEnabled { get; set; } = false;
+
         [Description("How much percent of all chaos must die in order for the round to end?")]
         public float ChaosDeadPercent { get; set; } = 0.5f;
 
@@ -45,6 +48,9 @@ namespace BetterSL
 
         [Description("How often should the damage from SCP 106 over time effect tick? (seconds)")]
         public float Scp106TickEvery { get; set; } = 1f;
+
+        [Description("if SCP 106 can attack through doors or not.")]
+        public bool Scp106CanAttackThroughDoors { get; set; } = true;
 
         [Description("Amount of time before a body auto drops from PD")]
         public int Scp106BodyDropDelay { get; set; } = 45;
