@@ -32,6 +32,11 @@ namespace BetterSL.Patches.Scp079
                     {
                         return;
                     }
+                    if(__instance.TotalLocked == 0)
+                    {
+                        Scp079DoorHandler.DoorsLocked = 0;
+                        return;
+                    }
                     bool trygetauxmanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079AuxManager>(out var auxmanager);
                     bool trygettiermanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079TierManager>(out var tiermanager);
                     if (!trygettiermanager || !trygetauxmanager)

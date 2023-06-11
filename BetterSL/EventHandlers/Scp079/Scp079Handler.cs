@@ -35,38 +35,17 @@ namespace BetterSL.EventHandlers.Scp079
             {
                 Log.Debug(player.RoleBase.name);
             }
+            Scp079DoorHandler.DoorsLocked = 0;
         }
 
         [PluginAPI.Core.Attributes.PluginEvent(PluginAPI.Enums.ServerEventType.PlayerGameConsoleCommand)]
         public void ConsoleCommand(Player player, string command, string[] arguments)
         {
-            if(command != "zeroap")
+            if(command != "fixdoors")
             {
                 return;
             }
-            if(player.Role != RoleTypeId.Scp079) 
-            {
-                player.SendConsoleMessage("You can only run this command if you are SCP 079!", "red");
-                return;
-            }
-            else
-            {
-                if (player.RoleBase is Scp079Role)
-                {
-                    var rolebase = player.RoleBase as Scp079Role;
-                    if (!rolebase.SubroutineModule.TryGetSubroutine<Scp079AuxManager>(out var manager))
-                    {
-                        Log.Error("Failed to get Scp079 Aux Manager!");
-                        return;
-                    }
-                    manager.CurrentAux = 0;
-                    
-                }
-                else
-                {
-                    Log.Debug(player.RoleBase.name);
-                }
-            }
+            Scp079DoorHandler.DoorsLocked = 0;
         }
     }
 }

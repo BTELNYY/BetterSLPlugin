@@ -18,12 +18,20 @@ namespace BetterSL.EventHandlers.Scp079
         public void OnDoorLock(Player player, DoorVariant door)
         {
             DoorsLocked++;
+            if (DoorsLocked < 0)
+            {
+                DoorsLocked = 0;
+            }
         }
 
         [PluginEvent(ServerEventType.Scp079UnlockDoor)]
         public void OnDoorUnlock(Player player, DoorVariant door)
         {
             DoorsLocked--;
+            if(DoorsLocked < 0)
+            {
+                DoorsLocked = 0;
+            }
         }
     }
 }

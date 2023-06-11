@@ -83,6 +83,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventHandlers\Generic\ChaosTargetHandler.cs" />
+    <Compile Include="EventHandlers\Generic\MTFHandler.cs" />
     <Compile Include="EventHandlers\Generic\GenericHandler.cs" />
     <Compile Include="EventHandlers\Generic\DimensionBodyHandler.cs" />
     <Compile Include="EventHandlers\Generic\ConsoleCommandHandler.cs" />

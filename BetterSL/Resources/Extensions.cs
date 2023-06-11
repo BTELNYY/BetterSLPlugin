@@ -88,6 +88,11 @@ namespace BetterSL.Resources
             return ReferenceHub.AllHubs.Where(x => x.roleManager.CurrentRole.Team == team).ToList();
         }
 
+        public static int GetAlivePlayers()
+        {
+            return ReferenceHub.AllHubs.Where(x => x.IsAlive()).Count();
+        }
+
         public static void BroadcastToTeam(Team team, string message)
         {
             List<ReferenceHub> hubs = GetByTeam(team);
