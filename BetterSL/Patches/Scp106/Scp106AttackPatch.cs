@@ -33,7 +33,7 @@ namespace BetterSL.Patches.Scp106
                 Vector3 vector = targetPosition - ownerPosition;
                 float sqrMagnitude = vector.sqrMagnitude;
                 float maxRangeSqr = (float)AccessTools.Field(typeof(Scp106Attack), "_maxRangeSqr").GetValue(__instance);
-                if (sqrMagnitude > maxRangeSqr)
+                if (sqrMagnitude > (maxRangeSqr + 0.3f))
                 {
                     return false;
                 }
@@ -49,7 +49,7 @@ namespace BetterSL.Patches.Scp106
                 }
                 //Log.Debug("Passed LineCast check!");
                 AnimationCurve dotOverDistance = AccessTools.Field(typeof(Scp106Attack), "_dotOverDistance").GetValue(__instance) as AnimationCurve;
-                if (dotOverDistance.Evaluate(sqrMagnitude) > Vector3.Dot(vector.normalized, forward.normalized))
+                if (dotOverDistance.Evaluate(sqrMagnitude) > (Vector3.Dot(vector.normalized, forward.normalized)) + 0.5f)
                 {
                     object[] missCooldown = { AccessTools.Field(typeof(Scp106Attack), "_missCooldown").GetValue(__instance) };
                     sendcooldownmethod.Invoke(__instance, missCooldown);
@@ -65,6 +65,7 @@ namespace BetterSL.Patches.Scp106
                 //Log.Debug("Passed dot over check!");
             }
             DamageHandlerBase handler = new ScpDamageHandler(__instance.Owner, Plugin.GetConfig().Scp106AttackDamage, DeathTranslations.PocketDecay);
+            DamageHandlerBase deathhandler = new ScpDamageHandler(__instance.Owner, -1f, DeathTranslations.PocketDecay);
             float hitCooldown = (float)AccessTools.Field(typeof(Scp106Attack), "_hitCooldown").GetValue(__instance);
             object[] cooldown = { hitCooldown };
             sendcooldownmethod.Invoke(__instance, cooldown);
@@ -86,7 +87,7 @@ namespace BetterSL.Patches.Scp106
                 }
                 //Log.Debug("Target will die, sent to pocket.");
                 playerEffectsController.EnableEffect<Corroding>(0f, false);
-                target.playerStats.DealDamage(handler);
+                target.playerStats.DealDamage(deathhandler);
                 vigor.VigorAmount += Plugin.GetConfig().Scp106OnKillVigor;
             }
             else
@@ -106,6 +107,7 @@ namespace BetterSL.Patches.Scp106
                             return;
                         }
                         playerEffectsController.EnableEffect<Corroding>(0f, false);
+                        target.playerStats.DealDamage(deathhandler);
                         vigor.VigorAmount += Plugin.GetConfig().Scp106OnKillVigor;
                     }
                     else

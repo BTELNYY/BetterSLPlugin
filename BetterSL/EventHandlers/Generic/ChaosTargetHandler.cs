@@ -7,6 +7,7 @@ using Respawning;
 using PlayerStatsSystem;
 using PlayerRoles;
 using MEC;
+using System.Linq;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -66,6 +67,11 @@ namespace BetterSL.EventHandlers.Generic
                     RoundSummary.RoundLock = false;
                 }
             });
+            if (ReferenceHub.AllHubs.Where(x => x.IsAlive()).Count() == BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency).Count())
+            {
+                //Fix infinite rounds
+                RoundSummary.RoundLock = false;
+            }
         }
 
         [PluginEvent(ServerEventType.PlayerDying)]
@@ -86,6 +92,11 @@ namespace BetterSL.EventHandlers.Generic
             }
             else
             {
+                RoundSummary.RoundLock = false;
+            }
+            if (ReferenceHub.AllHubs.Where(x => x.IsAlive()).Count() == BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency).Count())
+            {
+                //Fix infinite rounds
                 RoundSummary.RoundLock = false;
             }
         }
