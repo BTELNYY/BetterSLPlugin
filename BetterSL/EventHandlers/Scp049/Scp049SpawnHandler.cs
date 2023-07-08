@@ -18,14 +18,17 @@ using InventorySystem.Items.Keycards;
 using InventorySystem.Items;
 using Mirror;
 using InventorySystem.Items.Pickups;
+using PluginAPI.Events;
 
 namespace BetterSL.EventHandlers.Scp049
 {
     public class Scp049SpawnHandler
     {
         [PluginAPI.Core.Attributes.PluginEvent(PluginAPI.Enums.ServerEventType.PlayerSpawn)]
-        public void OnSpawn(Player player, RoleTypeId role)
+        public void OnSpawn(PlayerSpawnEvent e)
         {
+            RoleTypeId role = e.Role;
+            Player player = e.Player;
             if(role != RoleTypeId.Scp049) { return; }
             Timing.CallDelayed(0.5f, () =>
             {

@@ -8,6 +8,7 @@ using PlayerStatsSystem;
 using PlayerRoles;
 using MEC;
 using System.Linq;
+using PluginAPI.Events;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -42,8 +43,9 @@ namespace BetterSL.EventHandlers.Generic
         //}
 
         [PluginEvent(ServerEventType.TeamRespawn)]
-        public void ChaosWaveSpawned(SpawnableTeamType team)
+        public void ChaosWaveSpawned(TeamRespawnEvent ev)
         {
+            SpawnableTeamType team = ev.Team;
             Timing.CallDelayed(1f, () =>
             {
                 //Log.Debug("Team respawned!");
@@ -79,8 +81,9 @@ namespace BetterSL.EventHandlers.Generic
         }
 
         [PluginEvent(ServerEventType.PlayerDying)]
-        public void OnPlayerDeath(Player player, Player attacker, DamageHandlerBase damageHandler)
+        public void OnPlayerDeath(PlayerDyingEvent ev)
         {
+            Player player = ev.Player;
             int dclassCount = BetterSL.Resources.Extensions.GetByTeam(Team.ClassD).Count;
             int chaosCount = BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency).Count;
             int livingPlayers = BetterSL.Resources.Extensions.GetAlivePlayers();
@@ -114,8 +117,9 @@ namespace BetterSL.EventHandlers.Generic
         }
 
         [PluginEvent(ServerEventType.PlayerSpawn)]
-        public void OnPlayerSpawned(Player player, RoleTypeId role)
+        public void OnPlayerSpawned(PlayerSpawnEvent ev)
         {
+            RoleTypeId role = ev.Role;
             //Log.Debug("Player spawned!");
             if(role != RoleTypeId.ChaosConscript)
             {

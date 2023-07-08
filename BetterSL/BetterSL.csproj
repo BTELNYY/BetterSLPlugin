@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\build\Microsoft.CodeAnalysis.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\build\Microsoft.CodeAnalysis.Analyzers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -35,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="0Harmony, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lib.Harmony.2.3.0-alpha.5\lib\net48\0Harmony.dll</HintPath>
+      <HintPath>..\packages\Lib.Harmony.2.3.0-prerelease.2\lib\net48\0Harmony.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>..\depend\Assembly-CSharp.dll</HintPath>
@@ -47,25 +46,51 @@
     <Reference Include="CommandSystem.Core">
       <HintPath>..\depend\CommandSystem.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=4.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.4.7.0-2.final\lib\netstandard2.0\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=4.7.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.4.7.0-2.final\lib\netstandard2.0\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="Mirror">
       <HintPath>..\depend\Mirror.dll</HintPath>
     </Reference>
     <Reference Include="Mirror.Components">
       <HintPath>..\depend\Mirror.Components.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Cecil, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Mdb, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Pdb, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Cecil.Rocks, Version=0.11.5.0, Culture=neutral, PublicKeyToken=50cebf1cceb9d05e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mono.Cecil.0.11.5\lib\net40\Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
     <Reference Include="MonoMod.Backports, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoMod.Backports.1.0.0-prerelease.2\lib\net452\MonoMod.Backports.dll</HintPath>
+      <HintPath>..\packages\MonoMod.Backports.1.0.0\lib\net452\MonoMod.Backports.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.Core.1.0.0-prerelease.2\lib\net452\MonoMod.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Iced, Version=1.17.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.Core.1.0.0-prerelease.2\lib\net452\MonoMod.Iced.dll</HintPath>
     </Reference>
     <Reference Include="MonoMod.ILHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoMod.ILHelpers.1.0.0-prerelease.2\lib\net452\MonoMod.ILHelpers.dll</HintPath>
+      <HintPath>..\packages\MonoMod.ILHelpers.1.0.0\lib\net452\MonoMod.ILHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMod.Utils, Version=25.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoMod.Utils.25.0.0-prerelease.2\lib\net452\MonoMod.Utils.dll</HintPath>
     </Reference>
     <Reference Include="NwPluginAPI.Analyzers, Version=12.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <HintPath>..\packages\Northwood.PluginAPI.Analyzers.12.0.0\lib\netstandard2.0\NwPluginAPI.Analyzers.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="PluginAPI, Version=12.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <HintPath>..\packages\Northwood.PluginAPI.12.0.0\lib\net48\PluginAPI.dll</HintPath>
-      <Private>False</Private>
+    <Reference Include="PluginAPI, Version=13.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <HintPath>..\packages\Northwood.PluginAPI.13.1.0\lib\net48\PluginAPI.dll</HintPath>
     </Reference>
     <Reference Include="Pooling">
       <HintPath>..\depend\Pooling.dll</HintPath>
@@ -73,6 +98,31 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.8.0.0-preview.5.23280.8\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.8.0.0-preview.5.23280.8\lib\net462\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.7.0.0-preview.2.22152.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.8.0.0-preview.5.23280.8\lib\net462\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\depend\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -80,22 +130,22 @@
     <Reference Include="UnityEngine.PhysicsModule">
       <HintPath>..\depend\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
+    <Reference Include="YamlDotNet, Version=13.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.13.1.1\lib\net47\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\SpawnDummyCommand.cs" />
     <Compile Include="EventHandlers\Generic\ChaosTargetHandler.cs" />
     <Compile Include="EventHandlers\Generic\MTFHandler.cs" />
     <Compile Include="EventHandlers\Generic\GenericHandler.cs" />
     <Compile Include="EventHandlers\Generic\DimensionBodyHandler.cs" />
-    <Compile Include="EventHandlers\Generic\ConsoleCommandHandler.cs" />
-    <Compile Include="EventHandlers\Scp079\Scp079DoorHandler.cs" />
     <Compile Include="Managers\DummyManager.cs" />
+    <Compile Include="Patches\Scp079\Scp079BlackoutRoomPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079TerminationRewardPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079GeneratorPingRangePatch.cs" />
     <Compile Include="Patches\Scp079\Scp079PingGeneratorPatch.cs" />
-    <Compile Include="Patches\Scp106\Scp106DoorPatch.cs" />
-    <Compile Include="Patches\Scp106\Scp106AttackPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079DoorLockCostPatch.cs" />
-    <Compile Include="Patches\Scp079\Scp079DoorLockPatch.cs" />
     <Compile Include="Patches\Scp049\Scp049RevivePatch.cs" />
     <Compile Include="Patches\Scp939\Scp939ClawMaxHitsPatch.cs" />
     <Compile Include="Patches\Scp939\Scp939ClawSpeedPatch.cs" />
@@ -104,39 +154,28 @@
     <Compile Include="Utility.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventHandlers\Scp049\Scp049SpawnHandler.cs" />
-    <Compile Include="EventHandlers\Scp173\Scp173SpawnHandler.cs" />
     <Compile Include="EventHandlers\Items\Scp500UseHandler.cs" />
     <Compile Include="EventHandlers\Items\PlayerShootFirearmDebugScript.cs" />
     <Compile Include="EventHandlers\Scp079\Scp079Handler.cs" />
     <Compile Include="EventHandlers\Generic\PlayerJoinHandler.cs" />
     <Compile Include="Patches\Scp049\Scp049ChaseAbilityPatch.cs" />
     <Compile Include="Patches\Scp173\Scp173BreakneckSpeedsPatch.cs" />
-    <Compile Include="Patches\Scp079\Scp079CooldownPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079LockdownValuesPatch.cs" />
-    <Compile Include="Patches\Scp079\Scp079LockdownCostPatch.cs" />
     <Compile Include="Patches\Scp939\Scp939CloudAbilityPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079AuxRegenPatch.cs" />
     <Compile Include="Patches\Scp049\Scp049ArmorPatch.cs" />
-    <Compile Include="Patches\Scp106\Scp106HealthPatch.cs" />
-    <Compile Include="Patches\Scp106\Scp106HumePatch.cs" />
     <Compile Include="Patches\Scp096\Scp096MouseOneAttack.cs" />
     <Compile Include="Patches\Scp0492\Scp0492BloodlustPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
-    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.5-beta1.23270.2\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.3.3.5-beta1.23270.2\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\build\Microsoft.CodeAnalysis.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.Analyzers.2.9.8\build\Microsoft.CodeAnalysis.Analyzers.props'))" />
-  </Target>
 </Project>

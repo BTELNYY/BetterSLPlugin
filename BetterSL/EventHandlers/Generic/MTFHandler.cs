@@ -8,19 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InventorySystem;
+using PluginAPI.Events;
+using BetterSL.Resources;
+using MEC;
 
 namespace BetterSL.EventHandlers.Generic
 {
     public class MTFHandler
     {
         [PluginEvent(ServerEventType.PlayerSpawn)]
-        public void OnPlayerSpawned(Player player, RoleTypeId role)
+        public void OnPlayerSpawned(PlayerSpawnEvent ev)
         {
-            if(role == RoleTypeId.NtfPrivate)
+            Timing.CallDelayed(0.5f, () => 
             {
-                
-                //player.ReferenceHub.inventory.ServerRemoveItem();
-            }
+                Player player = ev.Player;
+                RoleTypeId role = ev.Role;
+                if (role == RoleTypeId.NtfPrivate)
+                {
+                    Extensions.RemoveItemFromPlayer(player, ItemType.KeycardNTFOfficer);
+                    player.AddItem(ItemType.KeycardNTFLieutenant);
+                }
+            });
         }
     }
 }

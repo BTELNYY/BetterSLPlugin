@@ -13,7 +13,6 @@ namespace BetterSL.EventHandlers.Generic
             DimensionBodyHandler.RagdollQueue.Clear();
             DimensionBodyHandler.ThreadStarted = false;
             DimensionBodyHandler.Handler.IsRunning = false;
-            Scp079DoorHandler.DoorsLocked = 0;
             ChaosTargetHandler.ChaosTotal = 0;
             ChaosTargetHandler.ChaosAlive = 0;
         }

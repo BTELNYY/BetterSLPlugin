@@ -1,6 +1,7 @@
 ﻿using InventorySystem.Items.Firearms;
 using MapGeneration;
 using PluginAPI.Core;
+using PluginAPI.Events;
 using UnityEngine;
 
 namespace BetterSL.EventHandlers.Items
@@ -9,8 +10,9 @@ namespace BetterSL.EventHandlers.Items
     {
         //debug event, uncomment if needed for specific room stuff
         //[PluginAPI.Core.Attributes.PluginEvent(PluginAPI.Enums.ServerEventType.PlayerShotWeapon)]
-        public void OnFire(Player player, Firearm firearm)
+        public void OnFire(PlayerShotWeaponEvent ev)
         {
+            Player player = ev.Player;
             RoomIdentifier roomIdentifier = RoomIdUtils.RoomAtPositionRaycasts(player.Position, true);
             if (roomIdentifier == null)
             {

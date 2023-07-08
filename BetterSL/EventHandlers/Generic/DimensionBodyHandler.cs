@@ -15,6 +15,7 @@ using Mirror;
 using MapGeneration;
 using PlayerRoles;
 using BetterSL.Managers;
+using PlayerRoles.Ragdolls;
 
 namespace BetterSL.EventHandlers.Generic
 {

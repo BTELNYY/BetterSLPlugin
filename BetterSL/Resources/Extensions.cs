@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using Interactables.Interobjects;
 using Interactables.Interobjects.DoorUtils;
+using InventorySystem;
 using MapGeneration;
 using PlayerRoles;
 using PlayerRoles.PlayableScps.Scp106;
@@ -100,6 +101,31 @@ namespace BetterSL.Resources
             {
                 Server.Broadcast.TargetAddElement(hub.connectionToClient, message, 5, Broadcast.BroadcastFlags.Normal);
             }
+        }
+
+        /// <summary>
+        /// Removes ONLY ONE item of the type from the player
+        /// </summary>
+        /// <param name="target">
+        /// Player to target
+        /// </param>
+        /// <param name="type">
+        /// ItemType to remove
+        /// </param>
+        /// <returns>
+        /// Wether or not the item was removed
+        /// </returns>
+        public static bool RemoveItemFromPlayer(Player target, ItemType type)
+        {
+            foreach (var item in target.ReferenceHub.inventory.UserInventory.Items.Keys)
+            {
+                if (target.ReferenceHub.inventory.UserInventory.Items[item].ItemTypeId == type)
+                {
+                    target.ReferenceHub.inventory.ServerRemoveItem(item, target.ReferenceHub.inventory.UserInventory.Items[item].PickupDropModel);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

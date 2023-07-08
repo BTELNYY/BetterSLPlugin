@@ -15,39 +15,21 @@ using BetterSL.EventHandlers.Scp079;
 
 namespace BetterSL.Patches.Scp079
 {
-    [HarmonyPatch(typeof(Scp079DoorLockChanger), "SetDoorLock")]
+    [HarmonyPatch(typeof(Scp079DoorLockChanger), nameof(Scp079DoorLockChanger.LockClosedDoorCost), MethodType.Getter)]
     public class Scp079DoorLockCostPatch
     {
-        public static bool CoroutineRunning = false;
-        public static CoroutineHandle Handle;
-
-        public static void Postfix(Scp079DoorLockChanger __instance, ref bool __result)
+        public static void Prefix(Scp079DoorLockChanger __instance, ref int __result)
         {
-            if(__result && !CoroutineRunning && !Handle.IsRunning)
+            bool trygetauxmanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079AuxManager>(out var auxmanager);
+            bool trygettiermanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079TierManager>(out var tiermanager);
+            if (!trygettiermanager || !trygetauxmanager)
             {
-                Handle = Timing.CallPeriodically(float.PositiveInfinity, 1f, () =>
-                {
-                    CoroutineRunning = true;
-                    if(Scp079DoorHandler.DoorsLocked == 0)
-                    {
-                        return;
-                    }
-                    if(__instance.TotalLocked == 0)
-                    {
-                        Scp079DoorHandler.DoorsLocked = 0;
-                        return;
-                    }
-                    bool trygetauxmanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079AuxManager>(out var auxmanager);
-                    bool trygettiermanager = __instance.ScpRole.SubroutineModule.TryGetSubroutine<Scp079TierManager>(out var tiermanager);
-                    if (!trygettiermanager || !trygetauxmanager)
-                    {
-                        PluginAPI.Core.Log.Error("Tier or Aux managers are null!");
-                        return;
-                    }
-                    int cost = (int)(auxmanager.MaxAux * Plugin.GetConfig().Scp079DoorLockCostPercent[tiermanager.AccessTierIndex]);
-                    auxmanager.CurrentAux -= cost;
-                });
+                PluginAPI.Core.Log.Error("Tier or Aux managers are null!");
+                return;
             }
+            float cost = auxmanager.MaxAux * Plugin.GetConfig().Scp079DoorLockCostPercent[tiermanager.AccessTierIndex];
+            var lockCostField = AccessTools.Field(typeof(Scp079DoorLockChanger), "_lockCostPerSec");
+            lockCostField.SetValue(__instance, cost);
             return;
         }
     }

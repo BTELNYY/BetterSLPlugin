@@ -1,4 +1,5 @@
-﻿using PlayerRoles;
+﻿using MapGeneration;
+using PlayerRoles;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Security.Policy;
@@ -27,30 +28,6 @@ namespace BetterSL
 
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
-
-        [Description("SCP 106's starting health")]
-        public float Scp106MaxHp { get; set; } = 1800;
-
-        [Description("How much damage should SCP 106 inflict on hit?")]
-        public float Scp106AttackDamage { get; set; } = 45;
-
-        [Description("How much vigor should SCP 106 get upon killing someone?")]
-        public float Scp106OnKillVigor { get; set; } = 0.2f;
-
-        [Description("How much vigor should SCP 106 get upon clicking someone?")]
-        public float Scp106OnAttackVigor { get; set; } = 0.3f;
-
-        [Description("How long (in seconds) should SCP 106's damage over time last?")]
-        public float Scp106AttackDamageOverTimeDuration { get; set; } = 4f;
-
-        [Description("How much should SCP 106's damage over time attack do per tick?")]
-        public float Scp106AttackDamageOverTimeDamage { get; set; } = 5f;
-
-        [Description("How often should the damage from SCP 106 over time effect tick? (seconds)")]
-        public float Scp106TickEvery { get; set; } = 1f;
-
-        [Description("if SCP 106 can attack through doors or not.")]
-        public bool Scp106CanAttackThroughDoors { get; set; } = true;
 
         [Description("Amount of time before a body auto drops from PD")]
         public int Scp106BodyDropDelay { get; set; } = 45;
@@ -90,6 +67,22 @@ namespace BetterSL
         [Description("SCP 079 regen per tier, goes from tier 0 to 5.")]
         public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.5f, 4.1f, 5.6f, 7.1f };
 
+        [Description("How much should a SCP 079 standard room blackout cost?")]
+        public int Scp079BlackoutCost { get; set; } = 35;
+
+        [Description("SCP 079 blackout cost multipliers per zone.")]
+        public Dictionary<FacilityZone, float> Scp079BlackoutCostsPerZoneMultiplier { get; set; } = new Dictionary<FacilityZone, float>
+        {
+            [FacilityZone.None] = 1f,
+            [FacilityZone.LightContainment] = 1f,
+            [FacilityZone.HeavyContainment] = 1f,
+            [FacilityZone.Entrance] = 1f,
+            [FacilityZone.Surface] = 3f
+        };
+
+        [Description("How long should the cooldown be between blackouts for SCP 079? (Between blackouts means this amount of time counted after the blackout ends)")]
+        public float Scp079SurfaceZoneBlackoutCooldown { get; set; } = 30f;
+
         [Description("How long should SCP 079's lockdown last?")]
         public float Scp079LockdownLength { get; set; } = 10f;
 
@@ -98,9 +91,6 @@ namespace BetterSL
 
         [Description("SCP 079's AP regen rate when lockdown is used. 0 will result in no regen.")]
         public float[] Scp079LockdownRegenMultiplier { get; set; } = { 0, 0, 0, 0.25f, 0.25f };
-
-        [Description("How many doors can SCP 079 have locked at the same time?")]
-        public int Scp079MaxLockedDoors { get; set; } = 1;
 
         [Description("How much AP should SCP 079 lose when locking doors per tier?")]
         public float[] Scp079DoorLockCostPercent { get; set; } = { 0.2f, 0.17f, 0.15f, 0.12f, 0.1f };

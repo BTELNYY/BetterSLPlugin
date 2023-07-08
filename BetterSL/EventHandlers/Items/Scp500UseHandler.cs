@@ -7,14 +7,17 @@ using InventorySystem.Items;
 using InventorySystem.Items.Usables;
 using PlayerStatsSystem;
 using PluginAPI.Core;
+using PluginAPI.Events;
 
 namespace BetterSL.EventHandlers.Items
 {
     public class Scp500UseHandler
     {
         [PluginAPI.Core.Attributes.PluginEvent(PluginAPI.Enums.ServerEventType.PlayerUsedItem)]
-        public void OnUseItem(Player player, ItemBase item)
+        public void OnUseItem(PlayerUsedItemEvent ev)
         {
+            ItemBase item = ev.Item;
+            Player player = ev.Player;
             if (!Plugin.GetConfig().Scp500GivesStamina)
             {
                 return;

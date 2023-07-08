@@ -17,11 +17,6 @@ namespace BetterSL.Patches.Scp079
             regenarray.SetValue(__instance, Plugin.GetConfig().Scp079LockdownRegenMultiplier);
             var duration = AccessTools.Field(typeof(Scp079LockdownRoomAbility), "_lockdownDuration");
             duration.SetValue(__instance, Plugin.GetConfig().Scp079LockdownLength);
-            //fix lockdown cooldown lasting forever
-            var cooldown = AccessTools.Field(typeof(Scp079LockdownRoomAbility), "RemainingCooldown");
-            PluginAPI.Core.Log.Debug(cooldown.GetValue(__instance).ToString());
-            cooldown.SetValue(__instance, 20f);
-            PluginAPI.Core.Log.Debug(cooldown.GetValue(__instance).ToString());
         }
     }
 }
