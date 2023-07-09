@@ -42,7 +42,10 @@ namespace BetterSL
         public bool Hcz049GlassCantBeBroken { get; set; } = true;
 
         [Description("Should the 049 gate be locked until generators are actived? (Note, make sure if this is enabled, 049 will be teleported as they will be trapped in the room!)")]
-        public bool Lock049GateUntil2GeneratorsAreActive { get; set; } = true;
+        public bool Lock049GateUntilGeneratorsAreActive { get; set; } = true;
+
+        [Description("How many generators must be enabled in order for the HCZ 049 gate to unlock?")]
+        public int Unlock049GateGeneratorEngagedAmount { get; set; } = 2;
 
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
