@@ -12,7 +12,7 @@ namespace BetterSL
         public bool PluginEnabled { get; set; } = true;
 
         [Description("Should dummy players be enabled?")]
-        public bool DummiesEnabled { get; set; } = false;
+        public bool DummiesEnabled { get; set; } = true;
 
         [Description("How much percent of all chaos must die in order for the round to end?")]
         public float ChaosDeadPercent { get; set; } = 0.5f;
@@ -36,7 +36,13 @@ namespace BetterSL
         public bool Scp500GivesStamina { get; set; } = true;
 
         [Description("Should a facility manager keycard spawn in 049's room?")]
-        public bool FacilityManagerSpawnsIn049 { get; set; } = false;
+        public bool FacilityManagerReplacesGuardCardIn049 { get; set; } = true;
+
+        [Description("Should the 049 glass be impossible to break?")]
+        public bool Hcz049GlassCantBeBroken { get; set; } = true;
+
+        [Description("Should the 049 gate be locked until generators are actived? (Note, make sure if this is enabled, 049 will be teleported as they will be trapped in the room!)")]
+        public bool Lock049GateUntil2GeneratorsAreActive { get; set; } = true;
 
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
@@ -52,6 +58,9 @@ namespace BetterSL
 
         [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
         public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
+
+        [Description("Should SCP 049 be teleported to top of his containment (past elevator) when the round starts?")]
+        public bool Scp049TeleportToTopOfRoom { get; set; } = true;
 
         [Description("Max speed of SCP-049-2's Lobotomized Bloodlust ability")]
         public float Scp0492BloodlustMaxSpeed { get; set; } = 5.4f;

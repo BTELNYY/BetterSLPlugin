@@ -30,15 +30,12 @@ namespace BetterSL.EventHandlers.Scp049
             RoleTypeId role = e.Role;
             Player player = e.Player;
             if(role != RoleTypeId.Scp049) { return; }
-            Timing.CallDelayed(0.5f, () =>
-            {
-                if (Plugin.GetConfig().FacilityManagerSpawnsIn049)
-                {
-                    Utility.CreateItemPickup(ItemType.KeycardFacilityManager, player.Position);
-                }
-            });
             Timing.CallDelayed(1f, () =>
             {
+                if(!Plugin.GetConfig().Scp049TeleportToTopOfRoom)
+                {
+                    return;
+                }
                 foreach (var room in RoomIdentifier.AllRoomIdentifiers)
                 {
                     if (room.name == "HCZ_049")

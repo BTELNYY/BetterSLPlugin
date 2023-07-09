@@ -20,11 +20,12 @@ namespace BetterSL.EventHandlers.Generic
         public static void Init()
         {
             ItemPickupBase.OnPickupAdded += LczArmorySwapItems;
+            ItemPickupBase.OnPickupAdded += Hcz049ReplaceGuardKeycard;
         }
 
         static Dictionary<Vector3, ItemPickupBase> ModifiedItems = new Dictionary<Vector3, ItemPickupBase>();
 
-        public static void LczArmorySwapItems(ItemPickupBase item)
+        private static void LczArmorySwapItems(ItemPickupBase item)
         {
             if(ModifiedItems.ContainsKey(item.Position))
             { return; }
@@ -55,16 +56,26 @@ namespace BetterSL.EventHandlers.Generic
             }
         }
 
+        private static void Hcz049ReplaceGuardKeycard(ItemPickupBase item)
+        {
+            if (ModifiedItems.ContainsKey(item.Position)) { return; }
+            if (RoomIdUtils.RoomAtPositionRaycasts(item.Position).Name != RoomName.Hcz049) { return; }
+            if(item.NetworkInfo.ItemId != ItemType.KeycardGuard) { return; }
+            if(Plugin.GetConfig().FacilityManagerReplacesGuardCardIn049 != true) { return; }
+            ReplaceItem(item, ItemType.KeycardFacilityManager);
+        }
+
+
         private static void ReplaceItem(ItemPickupBase original, ItemType newType)
         {
-            ItemPickupBase newItem = Utility.CreateItemPickup(newType, original.Position);
+            ItemPickupBase newItem = Resources.Extensions.CreateItemPickup(newType, original.Position);
             original.DestroySelf();
             ModifiedItems.Add(newItem.Position, newItem);
         }
 
         private static void ReplaceItem(ItemPickupBase original, ItemType newType, byte ammo)
         {
-            ItemPickupBase newItem = Utility.CreateFirearmPickup(newType, original.Position, ammo);
+            ItemPickupBase newItem = Resources.Extensions.CreateFirearmPickup(newType, original.Position, ammo);
             original.DestroySelf();
             ModifiedItems.Add(newItem.Position, newItem);
         }
@@ -81,7 +92,7 @@ namespace BetterSL.EventHandlers.Generic
             NewPos.y += 2.5f;
             for (int i = 0; i < Plugin.GetConfig().HczArmoryCombatArmorAmount; i++) 
             {
-                Utility.CreateItemPickup(ItemType.ArmorCombat, NewPos);
+                Resources.Extensions.CreateItemPickup(ItemType.ArmorCombat, NewPos);
             }
         }
     }

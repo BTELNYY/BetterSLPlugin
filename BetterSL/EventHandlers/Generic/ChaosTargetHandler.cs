@@ -42,6 +42,19 @@ namespace BetterSL.EventHandlers.Generic
         //    }
         //}
 
+        [PluginEvent(ServerEventType.RoundEndConditionsCheck)]
+        public RoundEndConditionsCheckCancellationData OnRoundEndConditionsCheck(RoundEndConditionsCheckEvent ev)
+        {
+            if (ChaosAlive > (ChaosTotal * Plugin.GetConfig().ChaosDeadPercent))
+            {
+                if (Resources.Extensions.GetScpTeam().Count != 0)
+                {
+                    return RoundEndConditionsCheckCancellationData.Override(false);
+                }
+            }
+            return RoundEndConditionsCheckCancellationData.Override(ev.BaseGameConditionsSatisfied);
+        }
+
         [PluginEvent(ServerEventType.TeamRespawn)]
         public void ChaosWaveSpawned(TeamRespawnEvent ev)
         {
@@ -62,13 +75,13 @@ namespace BetterSL.EventHandlers.Generic
                 {
                     if (BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                     {
-                        RoundSummary.RoundLock = true;
+                        //RoundSummary.RoundLock = true;
                         BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                     }
                 }
                 else
                 {
-                    RoundSummary.RoundLock = false;
+                    //RoundSummary.RoundLock = false;
                 }
             });
             int dclassCount = BetterSL.Resources.Extensions.GetByTeam(Team.ClassD).Count;
@@ -76,7 +89,7 @@ namespace BetterSL.EventHandlers.Generic
             int livingPlayers = BetterSL.Resources.Extensions.GetAlivePlayers();
             if ((dclassCount + chaosCount) == livingPlayers)
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
         }
 
@@ -89,7 +102,7 @@ namespace BetterSL.EventHandlers.Generic
             int livingPlayers = BetterSL.Resources.Extensions.GetAlivePlayers();
             if((dclassCount + chaosCount) == livingPlayers)
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
             //Log.Debug("Player dying!");
             if (player.Role.GetTeam() != Team.ChaosInsurgency)
@@ -102,17 +115,17 @@ namespace BetterSL.EventHandlers.Generic
             {
                 if (BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                 {
-                    RoundSummary.RoundLock = true;
+                    //RoundSummary.RoundLock = true;
                     BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                 }
             }
             else
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
             if(ChaosAlive == 0)
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
         }
 
@@ -133,20 +146,20 @@ namespace BetterSL.EventHandlers.Generic
                 //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
                 if(BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                 {
-                    RoundSummary.RoundLock = true;
+                    //RoundSummary.RoundLock = true;
                     BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                 }
             }
             else
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
             int dclassCount = BetterSL.Resources.Extensions.GetByTeam(Team.ClassD).Count;
             int chaosCount = BetterSL.Resources.Extensions.GetByTeam(Team.ChaosInsurgency).Count;
             int livingPlayers = BetterSL.Resources.Extensions.GetAlivePlayers();
             if ((dclassCount + chaosCount) == livingPlayers)
             {
-                RoundSummary.RoundLock = false;
+                //RoundSummary.RoundLock = false;
             }
         }
     }
