@@ -26,6 +26,12 @@ namespace BetterSL
         [Description("Should all Armor in LCZ armory be downgraded one tier?")]
         public bool LczArmoryDowngradeArmor { get; set; } = true;
 
+        [Description("Should HCZ armory spawn with combat armor?")]
+        public bool HczArmorySpawnCombatArmor { get; set; } = true;
+
+        [Description("How much combat armor to spawn in HCZ Armory?")]
+        public int HczArmoryCombatArmorAmount { get; set; } = 1;
+
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 

@@ -54,7 +54,7 @@ namespace BetterSL
             harmony.PatchAll();
             Log.Info("BetterSL v" + PluginVersion + " loaded.");
             RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
-            ItemPickupHandler.Init();
+            ItemSpawnHandler.Init();
         }
 
         [PluginUnload()]

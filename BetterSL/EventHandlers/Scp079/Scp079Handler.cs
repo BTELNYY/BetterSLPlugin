@@ -9,7 +9,6 @@ using PlayerRoles.PlayableScps.Scp079;
 using PluginAPI;
 using PluginAPI.Core;
 using PluginAPI.Events;
-using static PlayerList;
 
 namespace BetterSL.EventHandlers.Scp079
 {
