@@ -127,5 +127,11 @@ namespace BetterSL.Resources
             }
             return false;
         }
+
+        public static List<DoorVariant> GetDoorsByZone(FacilityZone zone)
+        {
+            List<DoorVariant> doors = DoorVariant.AllDoors.Where(x => x.IsInZone(zone)).ToList();
+            return doors;
+        }
     }
 }

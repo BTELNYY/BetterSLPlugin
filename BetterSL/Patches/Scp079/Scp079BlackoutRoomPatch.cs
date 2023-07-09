@@ -24,28 +24,30 @@ namespace BetterSL.Patches.Scp079
                 
             }catch(Exception e)
             {
+                Log.Debug("Error in Prefix");
                 Log.Error(e.ToString());
             }
         }
 
-        public static void Postfix(Scp079BlackoutRoomAbility __instance)
-        {
-            try
-            {
-                RoomLightController controller = (RoomLightController)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_roomController").GetValue(__instance);
-                var blackoutCooldownsField = AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_blackoutCooldowns");
-                double cooldown = (double)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_cooldown").GetValue(__instance);
-                float blackoutDuration = (float)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_blackoutDuration").GetValue(__instance);
-                Dictionary<uint, double> blackoutCooldowns = (Dictionary<uint, double>)blackoutCooldownsField.GetValue(__instance);
-                if (controller.Room.Zone == MapGeneration.FacilityZone.Surface)
-                {
-                    blackoutCooldowns[controller.netId] = NetworkTime.time + blackoutDuration + Plugin.GetConfig().Scp079SurfaceZoneBlackoutCooldown;
-                }
-                blackoutCooldownsField.SetValue(__instance, blackoutCooldowns);
-            }catch(Exception ex) 
-            {
-                Log.Error(ex.ToString());
-            }
-        }
+        //public static void Postfix(Scp079BlackoutRoomAbility __instance)
+        //{
+        //    try
+        //    {
+        //        RoomLightController controller = (RoomLightController)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_roomController").GetValue(__instance);
+        //        var blackoutCooldownsField = AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_blackoutCooldowns");
+        //        float cooldown = (float)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_cooldown").GetValue(__instance);
+        //        float blackoutDuration = (float)AccessTools.Field(typeof(Scp079BlackoutRoomAbility), "_blackoutDuration").GetValue(__instance);
+        //        Dictionary<uint, double> blackoutCooldowns = (Dictionary<uint, double>)blackoutCooldownsField.GetValue(__instance);
+        //        if (controller.Room.Zone == MapGeneration.FacilityZone.Surface)
+        //        {
+        //            blackoutCooldowns[controller.netId] = NetworkTime.time + blackoutDuration + Plugin.GetConfig().Scp079SurfaceZoneBlackoutCooldown;
+        //        }
+        //        blackoutCooldownsField.SetValue(__instance, blackoutCooldowns);
+        //    }catch(Exception ex) 
+        //    {
+        //        Log.Debug("Error in Postfix");
+        //        Log.Error(ex.ToString());
+        //    }
+        //}
     }
 }

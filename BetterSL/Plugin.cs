@@ -12,6 +12,8 @@ using HarmonyLib;
 using BetterSL.EventHandlers;
 using PlayerRoles.Ragdolls;
 using BetterSL.EventHandlers.Generic;
+using PluginAPI.Events;
+using InventorySystem.Items.Pickups;
 
 namespace BetterSL
 {
@@ -52,7 +54,7 @@ namespace BetterSL
             harmony.PatchAll();
             Log.Info("BetterSL v" + PluginVersion + " loaded.");
             RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
-            
+            ItemPickupHandler.Init();
         }
 
         [PluginUnload()]

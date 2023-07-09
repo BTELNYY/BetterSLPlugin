@@ -28,8 +28,9 @@ namespace BetterSL.Patches.Scp079
                 return;
             }
             float cost = auxmanager.MaxAux * Plugin.GetConfig().Scp079DoorLockCostPercent[tiermanager.AccessTierIndex];
+            //__result = (int)cost;
             var lockCostField = AccessTools.Field(typeof(Scp079DoorLockChanger), "_lockCostPerSec");
-            lockCostField.SetValue(__instance, cost);
+            //lockCostField.SetValue(__instance, cost);
             return;
         }
     }

@@ -20,6 +20,12 @@ namespace BetterSL
         [Description("Broadcast to all SCPs regarding chaos being targets")]
         public string ChaosTargetsBroadcast { get; set; } = $"You must kill alive chaos to end the round!";
 
+        [Description("Should the crossvecs in LCZ armory be replaced with FSP9s?")]
+        public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;
+
+        [Description("Should all Armor in LCZ armory be downgraded one tier?")]
+        public bool LczArmoryDowngradeArmor { get; set; } = true;
+
         [Description("Should SCP 500 give you back all your stamina on use?")]
         public bool Scp500GivesStamina { get; set; } = true;
 
