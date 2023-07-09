@@ -149,7 +149,6 @@
     <Compile Include="Patches\Scp079\Scp079TerminationRewardPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079GeneratorPingRangePatch.cs" />
     <Compile Include="Patches\Scp079\Scp079PingGeneratorPatch.cs" />
-    <Compile Include="Patches\Scp079\Scp079DoorLockCostPatch.cs" />
     <Compile Include="Patches\Scp049\Scp049RevivePatch.cs" />
     <Compile Include="Patches\Scp939\Scp939ClawMaxHitsPatch.cs" />
     <Compile Include="Patches\Scp939\Scp939ClawSpeedPatch.cs" />

@@ -20,7 +20,7 @@ namespace BetterSL.Commands
 
         public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            Player player = (Player)sender;
+            Player player = Player.Get((CommandSender)sender);
             if (Plugin.GetConfig().DummiesEnabled)
             {
                 DummyManager.SpawnDummy(player.Camera.position, true);
