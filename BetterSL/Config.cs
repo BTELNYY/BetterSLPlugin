@@ -24,7 +24,7 @@ namespace BetterSL
         public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;
 
         [Description("Should all Armor in LCZ armory be downgraded one tier?")]
-        public bool LczArmoryDowngradeArmor { get; set; } = true;
+        public bool LczArmoryDowngradeArmor { get; set; } = false;
 
         [Description("Should HCZ armory spawn with combat armor?")]
         public bool HczArmorySpawnCombatArmor { get; set; } = true;
