@@ -15,6 +15,7 @@ namespace BetterSL.EventHandlers.Generic
             DimensionBodyHandler.Handler.IsRunning = false;
             ChaosTargetHandler.ChaosTotal = 0;
             ChaosTargetHandler.ChaosAlive = 0;
+            ItemSpawnHandler.ModifiedItems.Clear();
         }
     }
 }

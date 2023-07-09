@@ -23,7 +23,7 @@ namespace BetterSL.EventHandlers.Generic
             ItemPickupBase.OnPickupAdded += Hcz049ReplaceGuardKeycard;
         }
 
-        static Dictionary<Vector3, ItemPickupBase> ModifiedItems = new Dictionary<Vector3, ItemPickupBase>();
+        public static Dictionary<Vector3, ItemPickupBase> ModifiedItems = new Dictionary<Vector3, ItemPickupBase>();
 
         private static void LczArmorySwapItems(ItemPickupBase item)
         {
