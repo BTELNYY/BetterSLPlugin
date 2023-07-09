@@ -47,6 +47,9 @@ namespace BetterSL
         [Description("How many generators must be enabled in order for the HCZ 049 gate to unlock?")]
         public int Unlock049GateGeneratorEngagedAmount { get; set; } = 2;
 
+        [Description("Should the HCZ 049 Armory need a keycard? (the button will still show the text but no keycard is actually needed)")]
+        public bool Hcz049ArmoryDoesNotNeedKeycard { get; set; } = true;
+
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
 

@@ -11,6 +11,7 @@ using Interactables.Interobjects.DoorUtils;
 using MapGeneration;
 using Interactables.Interobjects;
 using MEC;
+using HarmonyLib;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -29,6 +30,16 @@ namespace BetterSL.EventHandlers.Generic
                 return;
             }
             List<DoorVariant> alldoors = DoorVariant.AllDoors.Where(x => RoomIdUtils.RoomAtPositionRaycasts(x.transform.position).Name == RoomName.Hcz049).ToList();
+            if (Plugin.GetConfig().Hcz049ArmoryDoesNotNeedKeycard)
+            {
+                foreach (DoorVariant door in DoorVariant.AllDoors)
+                {
+                    if (door.TryGetComponent<DoorNametagExtension>(out DoorNametagExtension dne) && dne.GetName == "049_ARMORY")
+                    {
+                        door.RequiredPermissions = new DoorPermissions() { RequiredPermissions = KeycardPermissions.None };
+                    }
+                }
+            }
             List<DoorVariant> pryableDoors = alldoors.Where(x => x is PryableDoor).ToList();
             float lowesty = float.MaxValue;
             PryableDoor targetDoor = null;
