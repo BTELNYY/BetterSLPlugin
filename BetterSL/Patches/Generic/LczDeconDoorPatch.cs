@@ -4,6 +4,7 @@ using Interactables.Interobjects;
 using Interactables.Interobjects.DoorUtils;
 using LightContainmentZoneDecontamination;
 using MapGeneration;
+using MEC;
 using Mirror;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,19 @@ namespace BetterSL.Patches.Generic
             int nextPhase = (int)AccessTools.Field(typeof(DecontaminationController), "_nextPhase").GetValue(__instance);
             if (NetworkServer.active && __instance.DecontaminationPhases[nextPhase].Function == DecontaminationController.DecontaminationPhase.PhaseFunction.OpenCheckpoints)
             {
-                List<DoorVariant> lczDoors = Resources.Extensions.GetDoorsByZone(FacilityZone.LightContainment);
-                foreach(DoorVariant door in lczDoors)
+                Timing.CallDelayed(10f, () => 
                 {
-                    if(door is CheckpointDoor)
+                    List<DoorVariant> lczDoors = Resources.Extensions.GetDoorsByZone(FacilityZone.LightContainment);
+                    foreach (DoorVariant door in lczDoors)
                     {
-                        continue;
+                        if (door is CheckpointDoor)
+                        {
+                            continue;
+                        }
+                        door.ServerChangeLock(DoorLockReason.DecontEvacuate, true);
+                        door.NetworkTargetState = true;
                     }
-                    door.ServerChangeLock(DoorLockReason.DecontLockdown, true);
-                    door.NetworkTargetState = true;
-                }
+                });
             }
         }
     }

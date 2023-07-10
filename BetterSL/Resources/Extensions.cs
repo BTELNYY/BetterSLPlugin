@@ -191,5 +191,17 @@ namespace BetterSL.Resources
             itemPickup.transform.rotation = Quaternion.Euler(Vector3.up);
             return itemPickup;
         }
+
+        public static DoorVariant GetDoorBasedOnName(string name)
+        {
+            foreach (DoorVariant door in DoorVariant.AllDoors)
+            {
+                if (door.TryGetComponent<DoorNametagExtension>(out DoorNametagExtension dne) && dne.GetName == name)
+                {
+                    return door;
+                }
+            }
+            return null;
+        }
     }
 }

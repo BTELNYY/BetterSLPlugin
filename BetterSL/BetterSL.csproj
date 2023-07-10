@@ -135,6 +135,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CustomPrimitiveObjectCommand.cs" />
     <Compile Include="Commands\SpawnDummyCommand.cs" />
     <Compile Include="EventHandlers\Generic\ChaosTargetHandler.cs" />
     <Compile Include="EventHandlers\Generic\BreakableWindowHealthHandler.cs" />
