@@ -11,7 +11,7 @@ namespace BetterSL
         public bool PluginEnabled { get; set; } = true;
 
         [Description("Should dummy players be enabled?")]
-        public bool DummiesEnabled { get; set; } = true;
+        public bool DummiesEnabled { get; set; } = false;
 
         [Description("How much percent of all chaos must die in order for the round to end?")]
         public float ChaosDeadPercent { get; set; } = 0.5f;
@@ -52,6 +52,9 @@ namespace BetterSL
         [Description("Should the HCZ 049 Armory need a keycard? (the button will still show the text but no keycard is actually needed)")]
         public bool Hcz049ArmoryDoesNotNeedKeycard { get; set; } = true;
 
+        [Description("Should SCP 2176 Affect elevators?")]
+        public bool Scp2176AffectsElevators { get; set; } = true;
+
         [Description("How much damage should 096's base attack do?")]
         public float Scp096SwingDamage { get; set; } = 65f;
 
@@ -62,7 +65,7 @@ namespace BetterSL
         public int Scp049Armour { get; set; } = 35;
 
         [Description("How many times can SCP 049 revive a instance of SCP 049-2?")]
-        public int Scp049Max0492Ressurection { get; set; } = 2;
+        public int Scp049Max0492Ressurection { get; set; } = 3;
 
         [Description("How fast should SCP 049 'sprint' at when using the sense ability?")]
         public float Scp049SenseAbilitySpeed { get; set; } = 5.8f;
@@ -81,23 +84,23 @@ namespace BetterSL
 
         [Description("Termination reward multipliers for SCP 079.")]
         public Dictionary<Team, float> Scp079TerminationRewardMultipliers { get; set; } = new Dictionary<Team, float>{ 
-            [Team.ClassD] = 0.5f,
-            [Team.Scientists] = 0.5f,
-            [Team.FoundationForces] = 1f,
-            [Team.ChaosInsurgency] = 1f,
+            [Team.ClassD] = 0.75f,
+            [Team.Scientists] = 0.75f,
+            [Team.FoundationForces] = 1.1f,
+            [Team.ChaosInsurgency] = 1.1f,
             [Team.OtherAlive] = 1f,
             [Team.SCPs] = 1f,
             [Team.Dead] = 1f
         };
 
         [Description("How much AP should 079 spawn with?")]
-        public int Scp079SpawnAp { get; set; } = 0;
+        public int Scp079SpawnAp { get; set; } = 50;
 
         [Description("SCP 079 regen per tier, goes from tier 0 to 5.")]
-        public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.5f, 4.1f, 5.6f, 7.1f };
+        public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.8f, 4.1f, 5.6f, 7.1f };
 
         [Description("How much should a SCP 079 standard room blackout cost?")]
-        public int Scp079BlackoutCost { get; set; } = 35;
+        public int Scp079BlackoutCost { get; set; } = 25;
 
         [Description("SCP 079 blackout cost multipliers per zone.")]
         public Dictionary<FacilityZone, float> Scp079BlackoutCostsPerZoneMultiplier { get; set; } = new Dictionary<FacilityZone, float>
@@ -106,7 +109,7 @@ namespace BetterSL
             [FacilityZone.LightContainment] = 1f,
             [FacilityZone.HeavyContainment] = 1f,
             [FacilityZone.Entrance] = 1f,
-            [FacilityZone.Surface] = 3f
+            [FacilityZone.Surface] = 2f
         };
 
         [Description("How long should the cooldown be between blackouts for SCP 079? (Between blackouts means this amount of time counted after the blackout ends)")]
@@ -116,13 +119,10 @@ namespace BetterSL
         public float Scp079LockdownLength { get; set; } = 10f;
 
         [Description("How much should lockdown cost to use? (Precent of total AP)")]
-        public float Scp079LockdownCostPercent { get; set; } = 0.8f;
+        public float Scp079LockdownCostPercent { get; set; } = 0.4f;
 
         [Description("SCP 079's AP regen rate when lockdown is used. 0 will result in no regen.")]
         public float[] Scp079LockdownRegenMultiplier { get; set; } = { 0, 0, 0, 0.25f, 0.25f };
-
-        [Description("How much AP should SCP 079 lose when locking doors per tier?")]
-        public float[] Scp079DoorLockCostPercent { get; set; } = { 0.2f, 0.17f, 0.15f, 0.12f, 0.1f };
 
         [Description("Limit of players 939 can damage with one claw swipe")]
         public int Scp939MaxAoePlayerHits { get; set; } = 2;

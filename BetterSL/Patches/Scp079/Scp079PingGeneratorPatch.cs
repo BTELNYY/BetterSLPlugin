@@ -24,7 +24,7 @@ namespace BetterSL.Patches.Scp079
                 foreach(ReferenceHub scp in scpTeamMembers) 
                 {
                     string roomname = RoomIdUtils.RoomAtPosition(point).name;
-                    Server.Broadcast.TargetAddElement(scp.connectionToClient, Plugin.GetConfig().Scp079GeneratorAlertMessage.Replace("{room}", roomname), 5, Broadcast.BroadcastFlags.Normal);
+                    Player.Get(scp).SendBroadcast(Plugin.GetConfig().Scp079GeneratorAlertMessage.Replace("{room}", roomname), 10);
                 }
             }
         }

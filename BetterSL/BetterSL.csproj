@@ -149,6 +149,7 @@
     <Compile Include="Managers\SubclassManager.cs" />
     <Compile Include="Patches\Generic\BreakableWindowPatch.cs" />
     <Compile Include="Patches\Generic\LczDeconDoorPatch.cs" />
+    <Compile Include="Patches\Generic\Scp2176Patch.cs" />
     <Compile Include="Patches\Scp079\Scp079LockdownCost.cs" />
     <Compile Include="Patches\Scp079\Scp079BlackoutRoomCooldownPatch.cs" />
     <Compile Include="Patches\Scp079\Scp079BlackoutRoomPatch.cs" />

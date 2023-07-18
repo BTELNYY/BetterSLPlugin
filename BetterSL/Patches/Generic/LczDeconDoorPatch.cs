@@ -31,6 +31,10 @@ namespace BetterSL.Patches.Generic
                         {
                             continue;
                         }
+                        if(door is ElevatorDoor)
+                        {
+                            continue;
+                        }
                         door.ServerChangeLock(DoorLockReason.DecontEvacuate, true);
                         door.NetworkTargetState = true;
                     }

@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using BetterSL.EventHandlers;
 using PluginAPI.Core;
-using static Unity.IO.LowLevel.Unsafe.AsyncReadManagerMetrics;
 
 namespace BetterSL.Patches.Scp049
 {

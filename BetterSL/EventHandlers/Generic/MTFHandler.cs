@@ -12,6 +12,7 @@ using PluginAPI.Events;
 using BetterSL.Resources;
 using MEC;
 using BetterSL.Managers;
+using static UnityEngine.GraphicsBuffer;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -34,12 +35,24 @@ namespace BetterSL.EventHandlers.Generic
             });
         }
 
+        [PluginEvent(ServerEventType.PlayerDeath)]
+        public void OnPlayerDeath(PlayerDeathEvent ev)
+        {
+            ev.Player.PlayerInfo.IsRoleHidden = false;
+            ev.Player.CustomInfo = null;
+        }
+
+
         [PluginEvent(ServerEventType.TeamRespawn)]
         public void OnMTFSpawnAssignSubclasses(TeamRespawnEvent ev)
         {
             Timing.CallDelayed(0.5f, () => 
             {
                 if (!Plugin.GetConfig().MTFAssignSubclasses)
+                {
+                    return;
+                }
+                if(ev.Team != Respawning.SpawnableTeamType.NineTailedFox)
                 {
                     return;
                 }
