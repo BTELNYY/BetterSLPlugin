@@ -37,7 +37,7 @@ namespace BetterSL.EventHandlers.Generic
         [PluginEvent(ServerEventType.TeamRespawn)]
         public void OnMTFSpawnAssignSubclasses(TeamRespawnEvent ev)
         {
-            Timing.CallDelayed(1f, () => 
+            Timing.CallDelayed(0.5f, () => 
             {
                 if (!Plugin.GetConfig().MTFAssignSubclasses)
                 {
