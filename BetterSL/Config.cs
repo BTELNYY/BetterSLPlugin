@@ -2,7 +2,6 @@
 using PlayerRoles;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Security.Policy;
 
 namespace BetterSL
 {
@@ -139,5 +138,11 @@ namespace BetterSL
 
         [Description("Player join broadcast length (ushort)")]
         public ushort PlayerJoinBroadcastDuration { get; set; } = 20;
+
+        [Description("What should the broadcast regarding being a subclass say? use {subclass} to refer to the displayname, {description} to refer to the class description, and {filename} for the class file name on server disk.")]
+        public string PlayerSubclassNotificationText { get; set; } = "You are {subclass}! \n {description}";
+
+        [Description("How long should the subclass notification last for?")]
+        public ushort PlayerSubclassNotificationDuration { get; set; } = 5;
     }
 }

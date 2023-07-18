@@ -25,8 +25,10 @@ namespace BetterSL.EventHandlers.Generic
                 RoleTypeId role = ev.Role;
                 if (role == RoleTypeId.NtfPrivate)
                 {
-                    Extensions.RemoveItemFromPlayer(player, ItemType.KeycardNTFOfficer);
-                    player.AddItem(ItemType.KeycardNTFLieutenant);
+                    if(Extensions.RemoveItemFromPlayer(player, ItemType.KeycardNTFOfficer))
+                    {
+                        player.AddItem(ItemType.KeycardNTFLieutenant);
+                    }
                 }
             });
         }

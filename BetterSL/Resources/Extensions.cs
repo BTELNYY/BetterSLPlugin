@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using InventorySystem.Items.Firearms.Attachments;
 
 namespace BetterSL.Resources
 {
@@ -202,6 +203,25 @@ namespace BetterSL.Resources
                 }
             }
             return null;
+        }
+
+        public static void ApplyAttachments(Player ply)
+        {
+            var item = ply.Items.Where(i => i is Firearm);
+
+            foreach (var fire in item)
+            {
+                if (fire is Firearm fireArm)
+                {
+                    if (AttachmentsServerHandler.PlayerPreferences.TryGetValue(ply.ReferenceHub, out var value) && value.TryGetValue(fireArm.ItemTypeId, out var value2))
+                        fireArm.ApplyAttachmentsCode(value2, reValidate: true);
+                    var firearmStatusFlags = FirearmStatusFlags.MagazineInserted;
+                    if (fireArm.HasAdvantageFlag(AttachmentDescriptiveAdvantages.Flashlight))
+                        firearmStatusFlags |= FirearmStatusFlags.FlashlightEnabled;
+
+                    fireArm.Status = new FirearmStatus(fireArm.AmmoManagerModule.MaxAmmo, firearmStatusFlags, fireArm.GetCurrentAttachmentsCode());
+                }
+            }
         }
     }
 }

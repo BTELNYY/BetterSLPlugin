@@ -14,6 +14,8 @@ using PlayerRoles.Ragdolls;
 using BetterSL.EventHandlers.Generic;
 using PluginAPI.Events;
 using InventorySystem.Items.Pickups;
+using BetterSL.Managers;
+using System.Reflection;
 
 namespace BetterSL
 {
@@ -32,7 +34,7 @@ namespace BetterSL
         }
         public EventHandler eventHandler;
 
-        public string AudioPath = Path.Combine($"{Paths.Plugins}", "Sounds");
+        public string SubclassPath = "";
 
         [PluginEntryPoint(PluginName, PluginVersion, PluginDesc, "btelnyy#8395")]
         public void LoadPlugin()
@@ -42,6 +44,8 @@ namespace BetterSL
                 Log.Debug("Plugin is disabled!");
                 return;
             }
+            SubclassPath = Path.Combine($"{PluginHandler.Get(this).PluginDirectoryPath}", "subclasses");
+            Log.Debug(SubclassPath);
             instance = this;
             Log.Info("Registering events...");
             //uneeded
@@ -55,6 +59,7 @@ namespace BetterSL
             Log.Info("BetterSL v" + PluginVersion + " loaded.");
             RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
             ItemSpawnHandler.Init();
+            SubclassManager.Init();
         }
 
         [PluginUnload()]
