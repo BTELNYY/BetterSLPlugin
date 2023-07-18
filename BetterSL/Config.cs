@@ -19,6 +19,9 @@ namespace BetterSL
         [Description("Broadcast to all SCPs regarding chaos being targets")]
         public string ChaosTargetsBroadcast { get; set; } = $"You must kill alive chaos to end the round!";
 
+        [Description("Should the MTF team have classes reassigned with subclasses?")]
+        public bool MTFAssignSubclasses { get; set; } = true;
+
         [Description("Should the crossvecs in LCZ armory be replaced with FSP9s?")]
         public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;
 

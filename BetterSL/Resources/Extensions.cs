@@ -223,5 +223,12 @@ namespace BetterSL.Resources
                 }
             }
         }
+
+        public static T GetRandomElementFromList<T>(List<T> list)
+        {
+            System.Random random = new System.Random();
+            int index = random.Next(list.Count);
+            return list[index];
+        }
     }
 }

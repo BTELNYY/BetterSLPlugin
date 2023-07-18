@@ -11,6 +11,7 @@ using InventorySystem;
 using PluginAPI.Events;
 using BetterSL.Resources;
 using MEC;
+using BetterSL.Managers;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -29,6 +30,45 @@ namespace BetterSL.EventHandlers.Generic
                     {
                         player.AddItem(ItemType.KeycardNTFLieutenant);
                     }
+                }
+            });
+        }
+
+        [PluginEvent(ServerEventType.TeamRespawn)]
+        public void OnMTFSpawnAssignSubclasses(TeamRespawnEvent ev)
+        {
+            Timing.CallDelayed(1f, () => 
+            {
+                if (!Plugin.GetConfig().MTFAssignSubclasses)
+                {
+                    return;
+                }
+                BaseSubclass mtfVanguard = SubclassManager.GetSubclass("mtf_vanguard");
+                BaseSubclass mtfShockTrooper = SubclassManager.GetSubclass("mtf_shock_trooper");
+                BaseSubclass mtfMarksman = SubclassManager.GetSubclass("mtf_marksman");
+                List<Player> respawnedPlayers = ev.Players;
+                while (respawnedPlayers.Count > 0)
+                {
+                    Player player = BetterSL.Resources.Extensions.GetRandomElementFromList(respawnedPlayers);
+                    respawnedPlayers.Remove(player);
+                    SubclassManager.SetPlayerToSubclass(player, mtfMarksman);
+                    if (respawnedPlayers.Count == 0)
+                    {
+                        break;
+                    }
+                    Player player1 = BetterSL.Resources.Extensions.GetRandomElementFromList(respawnedPlayers);
+                    respawnedPlayers.Remove(player1);
+                    SubclassManager.SetPlayerToSubclass(player1, mtfVanguard);
+                    if (respawnedPlayers.Count == 0)
+                    {
+                        break;
+                    }
+                    Player player2 = BetterSL.Resources.Extensions.GetRandomElementFromList(respawnedPlayers);
+                    Player player3 = BetterSL.Resources.Extensions.GetRandomElementFromList(respawnedPlayers);
+                    respawnedPlayers.Remove(player2);
+                    respawnedPlayers.Remove(player3);
+                    SubclassManager.SetPlayerToSubclass(player2, mtfShockTrooper);
+                    SubclassManager.SetPlayerToSubclass(player3, mtfShockTrooper);
                 }
             });
         }

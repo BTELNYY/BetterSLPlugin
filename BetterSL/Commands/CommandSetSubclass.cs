@@ -62,6 +62,7 @@ namespace BetterSL.Commands
                         return false;
                     }
                     SubclassManager.SetPlayerToSubclass(p, baseSubClass);
+                    num++;
                 }
             }
             response = string.Format("Done! The request affected {0} player{1}", num, (num == 1) ? "!" : "s!");
