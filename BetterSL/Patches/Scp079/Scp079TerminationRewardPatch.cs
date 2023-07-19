@@ -20,27 +20,27 @@ namespace BetterSL.Patches.Scp079
                 case Team.FoundationForces:
                     if (rt == RoleTypeId.FacilityGuard)
                     {
-                        amount = (int)(25 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
+                        amount = (int)(30 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
                     }
                     else
                     {
-                        amount = (int)(30 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
+                        amount = (int)(50 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
                     }
                     return;
                 case Team.ChaosInsurgency:
-                    amount = (int)(30 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
-                    return;
-                case Team.Scientists:
                     amount = (int)(50 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
                     return;
-                case Team.ClassD:
+                case Team.Scientists:
                     amount = (int)(40 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
                     return;
-                case Team.OtherAlive:
+                case Team.ClassD:
                     amount = (int)(30 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
                     return;
+                case Team.OtherAlive:
+                    amount = (int)(50 * Plugin.GetConfig().Scp079TerminationRewardMultipliers[rt.GetTeam()]);
+                    return;
             }   
-            amount = 1;
+            amount = 0;
             return;
         }
     }

@@ -1,7 +1,6 @@
 ﻿using System;
 using PluginAPI.Core.Attributes;
 using PluginAPI.Enums;
-using BetterSL.EventHandlers.Scp079;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -16,6 +15,7 @@ namespace BetterSL.EventHandlers.Generic
             ChaosTargetHandler.ChaosTotal = 0;
             ChaosTargetHandler.ChaosAlive = 0;
             ItemSpawnHandler.ModifiedItems.Clear();
+            CorrodingHandler.CorrodedPlayers.Clear();
         }
     }
 }

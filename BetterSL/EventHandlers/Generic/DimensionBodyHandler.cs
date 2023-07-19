@@ -40,6 +40,10 @@ namespace BetterSL.EventHandlers.Generic
                 return;
             }
             //Log.Debug("Adding to ragdoll queue!");
+            if(RoomIdUtils.RoomAtPositionRaycasts(rag.CenterPoint.position).Name != RoomName.Pocket)
+            {
+                return;
+            }
             RagdollQueue.Add(rag);
             if (!ThreadStarted || Handler == null || !Handler.IsRunning)
             {

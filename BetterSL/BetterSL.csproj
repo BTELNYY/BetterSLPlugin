@@ -140,6 +140,8 @@
     <Compile Include="Commands\SpawnDummyCommand.cs" />
     <Compile Include="EventHandlers\Generic\ChaosTargetHandler.cs" />
     <Compile Include="EventHandlers\Generic\BreakableWindowHealthHandler.cs" />
+    <Compile Include="EventHandlers\Generic\CorrodingHandler.cs" />
+    <Compile Include="EventHandlers\Generic\FacilityGuardSpawnHandler.cs" />
     <Compile Include="EventHandlers\Generic\Hcz049Handler.cs" />
     <Compile Include="EventHandlers\Generic\ItemSpawnHandler.cs" />
     <Compile Include="EventHandlers\Generic\MTFHandler.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Managers\SubclassManager.cs" />
     <Compile Include="Patches\Generic\BreakableWindowPatch.cs" />
+    <Compile Include="Patches\Generic\CorrodingDictionaryPatch.cs" />
     <Compile Include="Patches\Generic\LczDeconDoorPatch.cs" />
     <Compile Include="Patches\Generic\Scp2176Patch.cs" />
     <Compile Include="Patches\Scp079\Scp079LockdownCost.cs" />

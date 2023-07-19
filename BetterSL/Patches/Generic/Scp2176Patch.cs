@@ -39,8 +39,17 @@ namespace BetterSL.Patches.Generic
             {
                 if(door is ElevatorDoor && Plugin.GetConfig().Scp2176AffectsElevators)
                 {
-                    door.ServerChangeLock(DoorLockReason.Lockdown2176, true);
-                    door.UnlockLater(13f, DoorLockReason.Lockdown2176);
+                    DoorLockMode mode = DoorLockUtils.GetMode((DoorLockReason)door.NetworkActiveLocks);
+                    DoorLockReason reason = (DoorLockReason)door.NetworkActiveLocks;
+                    if(reason == DoorLockReason.Lockdown2176)
+                    {
+                        door.ServerChangeLock(DoorLockReason.Lockdown2176, false);
+                    }
+                    else
+                    {
+                        door.ServerChangeLock(DoorLockReason.Lockdown2176, true);
+                        door.UnlockLater(13f, DoorLockReason.Lockdown2176);
+                    }
                 }
             }
         }

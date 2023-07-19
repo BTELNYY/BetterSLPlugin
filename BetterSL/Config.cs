@@ -1,4 +1,5 @@
-﻿using MapGeneration;
+﻿using Interactables.Interobjects.DoorUtils;
+using MapGeneration;
 using PlayerRoles;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,21 @@ namespace BetterSL
 
         [Description("Should the MTF team have classes reassigned with subclasses?")]
         public bool MTFAssignSubclasses { get; set; } = true;
+
+        [Description("Minimum and maximum in between which guards will spawn in LCZ, value is chosen at random at round start")]
+        public int GuardSpawnMinTime { get; set; } = 260;
+        public int GuardSpawnMaxTime { get; set; } = 290;
+
+        [Description("Maximum amount of guards to be spawned once they do spawn. Note that if there are no enough spectators, the game will only spawn the amount it can.")]
+        public uint MaxGuardSpawns { get; set; } = 5;
+
+        [Description("list of rooms where guards can spawn")]
+        public List<RoomName> GuardSpawnableRooms { get; set; } =  new List<RoomName>() 
+        {
+            RoomName.Lcz173,
+            RoomName.LczGlassroom,
+            RoomName.LczComputerRoom
+        };
 
         [Description("Should the crossvecs in LCZ armory be replaced with FSP9s?")]
         public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;
@@ -56,7 +72,7 @@ namespace BetterSL
         public bool Scp2176AffectsElevators { get; set; } = true;
 
         [Description("How much damage should 096's base attack do?")]
-        public float Scp096SwingDamage { get; set; } = 65f;
+        public float Scp096SwingDamage { get; set; } = 70f;
 
         [Description("Amount of time before a body auto drops from PD")]
         public int Scp106BodyDropDelay { get; set; } = 45;
@@ -84,10 +100,10 @@ namespace BetterSL
 
         [Description("Termination reward multipliers for SCP 079.")]
         public Dictionary<Team, float> Scp079TerminationRewardMultipliers { get; set; } = new Dictionary<Team, float>{ 
-            [Team.ClassD] = 0.75f,
-            [Team.Scientists] = 0.75f,
-            [Team.FoundationForces] = 1.1f,
-            [Team.ChaosInsurgency] = 1.1f,
+            [Team.ClassD] = 1f,
+            [Team.Scientists] = 1f,
+            [Team.FoundationForces] = 0.7f,
+            [Team.ChaosInsurgency] = 0.7f,
             [Team.OtherAlive] = 1f,
             [Team.SCPs] = 1f,
             [Team.Dead] = 1f
@@ -97,7 +113,7 @@ namespace BetterSL
         public int Scp079SpawnAp { get; set; } = 50;
 
         [Description("SCP 079 regen per tier, goes from tier 0 to 5.")]
-        public float[] Scp079RegenRate { get; set; } = { 1.7f, 2.8f, 4.1f, 5.6f, 7.1f };
+        public float[] Scp079RegenRate { get; set; } = { 1.9f, 2.8f, 4.1f, 5.6f, 7.1f };
 
         [Description("How much should a SCP 079 standard room blackout cost?")]
         public int Scp079BlackoutCost { get; set; } = 25;
