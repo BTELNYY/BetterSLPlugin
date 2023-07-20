@@ -181,6 +181,7 @@
     <Compile Include="Patches\Scp0492\Scp0492BloodlustPatch.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\TextConfig.cs" />
     <Compile Include="Subclasses\MtfMarksmanSubclass.cs" />
     <Compile Include="Subclasses\MtfShockTrooperSubclass.cs" />
     <Compile Include="Subclasses\MtfVanguardSubclass.cs" />

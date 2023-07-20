@@ -1,8 +1,11 @@
-﻿using Interactables.Interobjects.DoorUtils;
+﻿using BetterSL.Resources;
+using Interactables.Interobjects.DoorUtils;
 using MapGeneration;
 using PlayerRoles;
+using PluginAPI.Helpers;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Policy;
 
 namespace BetterSL
 {
@@ -24,8 +27,8 @@ namespace BetterSL
         public bool MTFAssignSubclasses { get; set; } = true;
 
         [Description("Minimum and maximum in between which guards will spawn in LCZ, value is chosen at random at round start")]
-        public int GuardSpawnMinTime { get; set; } = 260;
-        public int GuardSpawnMaxTime { get; set; } = 290;
+        public int GuardSpawnMinTime { get; set; } = 140;
+        public int GuardSpawnMaxTime { get; set; } = 170;
 
         [Description("Maximum amount of guards to be spawned once they do spawn. Note that if there are no enough spectators, the game will only spawn the amount it can.")]
         public uint MaxGuardSpawns { get; set; } = 5;
@@ -37,6 +40,50 @@ namespace BetterSL
             RoomName.LczGlassroom,
             RoomName.LczComputerRoom
         };
+
+        [Description("Should corpses of guards spawn in HCZ and EZ? (Custom names and death reasons in other config files)")]
+        public bool ShouldGuardCorpsesSpawn { get; set; } = true;
+
+        [Description("Amount of corpses present in the facility maximum")]
+        public int GuardCorpseAmount { get; set; } = 4;
+
+        [Description("List of allowed rooms where guard corpses can spawn. Note that duplicate entries mean multiple corpses can spawn.")]
+        public List<RoomName> GuardCorpseSpawnableRooms { get; set; } = new List<RoomName>() 
+        {
+            RoomName.HczServers,
+            RoomName.HczTestroom,
+            RoomName.Hcz939,
+            RoomName.EzEvacShelter,
+            RoomName.EzEvacShelter,
+            RoomName.EzOfficeSmall,
+            RoomName.EzOfficeSmall,
+            RoomName.EzOfficeLarge,
+            RoomName.EzOfficeLarge,
+            RoomName.EzOfficeStoried,
+            RoomName.EzOfficeStoried,
+            RoomName.EzCollapsedTunnel,
+            RoomName.EzCollapsedTunnel
+        };
+
+        [Description("What should spawn on guards in HCZ? Note that the amount of things spawned works just as expected unless the item is a gun, at which point the amount counts as ammo.")]
+        public Dictionary<ItemType, int> HczGuardCorpseContents { get; set; } = new Dictionary<ItemType, int>() 
+        {
+            [ItemType.KeycardGuard] = 1,
+            [ItemType.GunCOM18] = 0,
+            [ItemType.Ammo9x19] = 30,
+            [ItemType.ArmorLight] = 1
+        };
+
+        [Description("What should spawn on guards in EZ? Note that the amount of things spawned works just as expected unless the item is a gun, at which point the amount counts as ammo.")]
+        public Dictionary<ItemType, int> EzGuardCorpseContents { get; set; } = new Dictionary<ItemType, int>()
+        {
+            [ItemType.KeycardGuard] = 1,
+            [ItemType.GunFSP9] = 0,
+            [ItemType.Ammo9x19] = 40,
+            [ItemType.ArmorLight] = 1
+        };
+
+
 
         [Description("Should the crossvecs in LCZ armory be replaced with FSP9s?")]
         public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;

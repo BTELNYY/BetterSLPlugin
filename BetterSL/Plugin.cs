@@ -16,6 +16,7 @@ using PluginAPI.Events;
 using InventorySystem.Items.Pickups;
 using BetterSL.Managers;
 using System.Reflection;
+using BetterSL.Resources;
 
 namespace BetterSL
 {
@@ -33,8 +34,10 @@ namespace BetterSL
             return instance.config;
         }
         public EventHandler eventHandler;
-
         public string SubclassPath = "";
+        public string ConfigPath = "";
+        public static TextConfig NpcNameConfig = null;
+        public static TextConfig NpcDeathConfig = null;
 
         [PluginEntryPoint(PluginName, PluginVersion, PluginDesc, "btelnyy#8395")]
         public void LoadPlugin()
@@ -45,7 +48,7 @@ namespace BetterSL
                 return;
             }
             SubclassPath = Path.Combine($"{PluginHandler.Get(this).PluginDirectoryPath}", "subclasses");
-            Log.Debug(SubclassPath);
+            ConfigPath = PluginHandler.Get(this).PluginDirectoryPath;
             instance = this;
             Log.Info("Registering events...");
             //uneeded
@@ -60,6 +63,42 @@ namespace BetterSL
             RagdollManager.OnRagdollSpawned += DimensionBodyHandler.OnRagdoll;
             ItemSpawnHandler.Init();
             SubclassManager.Init();
+            NpcDeathConfig = new TextConfig(ConfigPath, "npc_death_reasons", new List<string>()
+            {
+                "Mauled by Roxanne Wolf",
+                "Was forced to play Changed",
+                "Became discord kitten",
+                "I don't know how they died",
+                "Got [REDACTED] by SCP 939",
+                "Drank the forbidden milk from under the sink",
+                "Exploded",
+                "Crushed by SCP 939's massive ass",
+                "Forced to code Yandere Simulator",
+                "Couldn't escape the van",
+                "Imploded",
+                "Tried to client mod Secret Lab",
+                "Tried to visit the titanic",
+                "[DATA LOST]",
+                "Forced to install ARK:SE mods on Linux"
+            });
+            NpcNameConfig = new TextConfig(ConfigPath, "npc_names", new List<string>()
+            {
+                "Gregory",
+                "Joe mama",
+                "D-9341",
+                "Joseph Stalin",
+                "William Afton",
+                "???",
+                "Bob",
+                "TV",
+                "Adam Smith",
+                "Johnny",
+                "the pacer gram fitness test",
+                "catcloner",
+                "gonegooner",
+                "Class D Puro",
+                "hilts"
+            });
         }
 
         [PluginUnload()]

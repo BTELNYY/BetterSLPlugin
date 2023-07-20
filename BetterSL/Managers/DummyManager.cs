@@ -353,6 +353,15 @@ namespace BetterSL.Managers
             NetworkServer.Destroy(dummy.gameObject);
         }
 
+        public static void SpawnRagdoll(string name, Vector3 position, RoleTypeId role, string reason)
+        {
+            ReferenceHub dummy = SpawnDummy(position, false, name, role);
+            Timing.CallDelayed(0.4f, () =>
+            {
+                Player.Get(dummy).Kill(reason);
+            });
+            NetworkServer.Destroy(dummy.gameObject);
+        }
 
         [PluginEvent(ServerEventType.PlayerDeath)]
         public void OnPlayerDeath(Player player, Player attacker, DamageHandlerBase damageHandler)

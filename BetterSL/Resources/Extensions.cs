@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 using InventorySystem.Items.Firearms.Attachments;
+using InventorySystem.Items.Firearms.Ammo;
 
 namespace BetterSL.Resources
 {
@@ -182,6 +183,28 @@ namespace BetterSL.Resources
                 firearmitem.transform.position = Position;
                 firearmitem.transform.rotation = Quaternion.Euler(Vector3.up);
                 return firearmitem;
+            }
+            else
+            {
+                Log.Warning("Item ID is not a firearm!", nameof(Extensions.CreateFirearmPickup));
+            }
+            ItemPickupBase itemPickup = itemBase.ServerDropItem();
+            itemPickup.transform.position = Position;
+            itemPickup.transform.rotation = Quaternion.Euler(Vector3.up);
+            return itemPickup;
+        }
+
+        public static ItemPickupBase CreateAmmoPickup(ItemType type, Vector3 Position, int ammo)
+        {
+            ItemBase itemBase = ReferenceHub.HostHub.inventory.ServerAddItem(type);
+            if (itemBase is AmmoItem)
+            {
+                AmmoItem ammoItem = (AmmoItem)itemBase;
+                ammoItem.UnitPrice = ammo;
+                ItemPickupBase ammoItemPickup = ammoItem.ServerDropItem();
+                ammoItemPickup.transform.position = Position;
+                ammoItemPickup.transform.rotation = Quaternion.Euler(Vector3.up);
+                return ammoItemPickup;
             }
             else
             {
