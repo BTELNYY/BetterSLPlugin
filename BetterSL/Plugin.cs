@@ -23,7 +23,7 @@ namespace BetterSL
     public class Plugin
     {
         public const string PluginName = "BetterSL";
-        public const string PluginVersion = "0.5.2";
+        public const string PluginVersion = "0.6.0";
         public const string PluginDesc = "A plugin to make \'better\' balancing changes to SL.";
         public Harmony harmony;
         public static Plugin instance;

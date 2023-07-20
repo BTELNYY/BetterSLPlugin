@@ -23,6 +23,7 @@ using InventorySystem.Items.Firearms;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using PlayerStatsSystem;
 using Mirror;
+using PlayerRoles.FirstPersonControl;
 
 namespace BetterSL.EventHandlers.Generic
 {
@@ -89,7 +90,7 @@ namespace BetterSL.EventHandlers.Generic
         [PluginEvent(ServerEventType.RoundStart)]
         public void SpawnRagdollsEvent(RoundStartEvent ev)
         {
-            Timing.CallDelayed(1f, () => 
+            Timing.CallDelayed(0.5f, () => 
             {
                 SpawnRagdolls();
             });
@@ -102,6 +103,7 @@ namespace BetterSL.EventHandlers.Generic
             {
                 return;
             }
+            RoundSummary.RoundLock = true;
             List<RoomName> allowedRooms = Plugin.GetConfig().GuardCorpseSpawnableRooms;
             List<string> npcNames = Plugin.NpcNameConfig.CurrentText;
             List<string> npcDeathReasons = Plugin.NpcDeathConfig.CurrentText;
@@ -117,13 +119,16 @@ namespace BetterSL.EventHandlers.Generic
                 if (rooms != null)
                 {
                     RoomIdentifier room = Resources.Extensions.GetRandomElementFromList(rooms.ToList());
+                    //Log.Debug("Chosen room: " + room.Name.ToString());
                     HashSet<DoorVariant> doors = DoorVariant.DoorsByRoom[room];
                     DoorVariant door = Resources.Extensions.GetRandomElementFromList(doors.ToList());
+                    //Log.Debug("Chosen door: " + door.name);
                     Vector3 doorPosition = door.transform.position;
                     doorPosition.y += 1f;
                     string name = Resources.Extensions.GetRandomElementFromList(npcNames);
                     if(npcNames.Count == 0) 
                     {
+                        Log.Warning("Ran out of names for NPCs!");
                         name = "Ran out of names!";
                     }
                     else
@@ -138,8 +143,10 @@ namespace BetterSL.EventHandlers.Generic
                     {
                         dummyHub.inventory.ServerRemoveItem(userInventory.Items.ElementAt(0).Key, null);
                     }
+                    //Log.Debug("Dummy Spawned");
                     if (room.Zone == FacilityZone.HeavyContainment)
                     {
+                        //Log.Debug("Adding Items! (HCZ)");
                         foreach(ItemType item in Plugin.GetConfig().HczGuardCorpseContents.Keys)
                         {
                             int Amount = Plugin.GetConfig().HczGuardCorpseContents[item];
@@ -156,7 +163,7 @@ namespace BetterSL.EventHandlers.Generic
                                 dummyHub.inventory.ServerAddAmmo(item, Amount);
                                 continue;
                             }
-                            for(int y = 0; y < Amount; i++)
+                            for(int y = 0; y < Amount; y++)
                             {
                                 dummyHub.inventory.ServerAddItem(item);
                             }
@@ -164,6 +171,7 @@ namespace BetterSL.EventHandlers.Generic
                     }
                     else
                     {
+                        //Log.Debug("Adding items! (EZ)");
                         foreach (ItemType item in Plugin.GetConfig().EzGuardCorpseContents.Keys)
                         {
                             int Amount = Plugin.GetConfig().EzGuardCorpseContents[item];
@@ -173,15 +181,18 @@ namespace BetterSL.EventHandlers.Generic
                                 Firearm firearm = (Firearm)itemBase;
                                 FirearmStatus status = new FirearmStatus((byte)Amount, firearm.Status.Flags, firearm.Status.Attachments);
                                 firearm.Status = status;
+                                //Log.Debug("Added firearm");
                                 continue;
                             }
                             if (item.ToString().Contains("Ammo"))
                             {
+                                //Log.Debug("Added Ammo");
                                 dummyHub.inventory.ServerAddAmmo(item, Amount);
                                 continue;
                             }
-                            for (int y = 0; y < Amount; i++)
+                            for (int y = 0; y < Amount; y++)
                             {
+                                //Log.Debug("Added item");
                                 dummyHub.inventory.ServerAddItem(item);
                             }
                         }
@@ -189,19 +200,33 @@ namespace BetterSL.EventHandlers.Generic
                     string deathReason = Resources.Extensions.GetRandomElementFromList(npcDeathReasons);
                     if(npcDeathReasons.Count == 0)
                     {
+                        Log.Warning("Ran out of NPC death reasons!");
                         deathReason = "Ran out of death reasons.";
                     }
                     else
                     {
                         npcDeathReasons.Remove(deathReason);
                     }
-                    Player.Get(dummyHub).Kill(deathReason);
+                    dummyHub.TryOverridePosition(doorPosition, Vector3.up);
+                    //Log.Debug("Killing NPC!");
+                    Player npc = Player.Get(dummyHub);
+                    try
+                    {
+                        npc.Kill(deathReason);
+                    }catch(Exception ex)
+                    {
+                        Log.Error(ex.ToString());
+                    }
+                    //Log.Debug("Despawning NPC!");
+                    //npc.Kick(null, "Despawn");
                     NetworkServer.Destroy(dummyHub.gameObject);
+                    NetworkServer.Destroy(npc.GameObject);
                 }
                 else
                 {
                     Log.Warning("Can't find room! Room: " + chosenRoom.ToString());
                 }
+                RoundSummary.RoundLock = false;
             }
         }
     }

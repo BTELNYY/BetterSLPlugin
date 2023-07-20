@@ -45,7 +45,7 @@ namespace BetterSL
         public bool ShouldGuardCorpsesSpawn { get; set; } = true;
 
         [Description("Amount of corpses present in the facility maximum")]
-        public int GuardCorpseAmount { get; set; } = 4;
+        public int GuardCorpseAmount { get; set; } = 5;
 
         [Description("List of allowed rooms where guard corpses can spawn. Note that duplicate entries mean multiple corpses can spawn.")]
         public List<RoomName> GuardCorpseSpawnableRooms { get; set; } = new List<RoomName>() 
@@ -53,16 +53,16 @@ namespace BetterSL
             RoomName.HczServers,
             RoomName.HczTestroom,
             RoomName.Hcz939,
-            RoomName.EzEvacShelter,
+            RoomName.HczWarhead,
+            RoomName.HczMicroHID,
+            RoomName.HczCheckpointA,
+            RoomName.HczCheckpointB,
             RoomName.EzEvacShelter,
             RoomName.EzOfficeSmall,
-            RoomName.EzOfficeSmall,
-            RoomName.EzOfficeLarge,
             RoomName.EzOfficeLarge,
             RoomName.EzOfficeStoried,
             RoomName.EzOfficeStoried,
             RoomName.EzCollapsedTunnel,
-            RoomName.EzCollapsedTunnel
         };
 
         [Description("What should spawn on guards in HCZ? Note that the amount of things spawned works just as expected unless the item is a gun, at which point the amount counts as ammo.")]
