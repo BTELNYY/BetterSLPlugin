@@ -27,9 +27,9 @@ namespace BetterSL.StatusEffects
 
         protected override void OnTick()
         {
-            int roxanne = (int)Math.Floor((float)(_currentTicks / MultiplyDamageEveryTicks));
+            int multiplyAmount = (int)Math.Floor((float)(_currentTicks / MultiplyDamageEveryTicks));
             CurrentDamage = MinDamage * Intensity;
-            for (int i = 0; i < roxanne; i++)
+            for (int i = 0; i < multiplyAmount; i++)
             {
                 CurrentDamage *= DamageMultiplier;
             }
@@ -44,6 +44,5 @@ namespace BetterSL.StatusEffects
         public float CurrentDamage = 1f;
         public int MultiplyDamageEveryTicks = 15;
         public float DamageMultiplier = 2f;
-
     }
 }
