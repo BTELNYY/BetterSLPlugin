@@ -17,7 +17,9 @@ namespace BetterSL.Patches.Generic
     {
         public static List<StatusEffectBase> CustomEffects = new List<StatusEffectBase>()
         {
-            new Radiation()
+            new Radiation(),
+            new BetterBleeding(),
+            new Fear()
         };
 
         public static void Prefix(PlayerEffectsController __instance)

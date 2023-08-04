@@ -14,6 +14,7 @@ using PlayerRoles.PlayableScps.Subroutines;
 using System.Runtime.CompilerServices;
 using PlayerRoles;
 using PlayerRoles.PlayableScps.Scp049.Zombies;
+using BetterSL.StatusEffects;
 
 namespace BetterSL.Patches.Scp939
 {
@@ -96,6 +97,10 @@ namespace BetterSL.Patches.Scp939
                     //Done, onion man suggested.
                     //Log.Debug("removing target!");
                     targettedPlayers.Remove(targettedPlayers.Last());
+                }
+                foreach(ReferenceHub hitplayer in targettedPlayers)
+                {
+                    hitplayer.playerEffectsController.ChangeState<BetterBleeding>(Plugin.GetConfig().Scp939BleedingIntensity, Plugin.GetConfig().Scp939BleedingOnHitDuration, Plugin.GetConfig().Scp939BleedingTimeStacks);
                 }
                 return;
             }

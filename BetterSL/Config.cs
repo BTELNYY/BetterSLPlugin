@@ -199,6 +199,15 @@ namespace BetterSL
         [Description("Message to show to 939 players who try to use gas in elevators")]
         public string Scp939GasInElevatorMessage { get; set; } = "You can't deploy amnestic cloud in elevators!";
 
+        [Description("How long should players bleed after a SCP 939 Claw attack? (Set to 0 to disable)")]
+        public float Scp939BleedingOnHitDuration { get; set; } = 5f;
+
+        [Description("Should hit time stack? e.g. if you are hit twice the time from both hits is added.")]
+        public bool Scp939BleedingTimeStacks { get; set; } = true;
+
+        [Description("The effects intensity, the formula is 2 * intensity = damage")]
+        public byte Scp939BleedingIntensity { get; set; } = 1;
+
         [Description("Player join broadcast text")]
         public string PlayerJoinBroadcastText { get; set; } = "Welcome to the \'rebalanced\' SL. All content is still in early development, things may change.";
 
