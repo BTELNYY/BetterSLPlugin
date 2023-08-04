@@ -75,7 +75,7 @@ namespace BetterSL.EventHandlers.Generic
                 {
                     if (BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                     {
-                        //RoundSummary.RoundLock = true;
+                        
                         BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                     }
                 }
@@ -115,7 +115,7 @@ namespace BetterSL.EventHandlers.Generic
             {
                 if (BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                 {
-                    //RoundSummary.RoundLock = true;
+                    
                     BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                 }
             }
@@ -146,7 +146,7 @@ namespace BetterSL.EventHandlers.Generic
                 //Log.Debug($"More alive chaos then aloud! Alive: {ChaosAlive} Total: {ChaosTotal}");
                 if(BetterSL.Resources.Extensions.GetScpTeam().Count != 0)
                 {
-                    //RoundSummary.RoundLock = true;
+                    
                     BetterSL.Resources.Extensions.BroadcastToTeam(Team.SCPs, Plugin.GetConfig().ChaosTargetsBroadcast);
                 }
             }

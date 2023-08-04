@@ -151,6 +151,7 @@
     <Compile Include="Managers\SubclassManager.cs" />
     <Compile Include="Patches\Generic\BreakableWindowPatch.cs" />
     <Compile Include="Patches\Generic\CorrodingDictionaryPatch.cs" />
+    <Compile Include="Patches\Generic\EffectsPatch.cs" />
     <Compile Include="Patches\Generic\LczDeconDoorPatch.cs" />
     <Compile Include="Patches\Generic\Scp2176Patch.cs" />
     <Compile Include="Patches\Scp079\Scp079LockdownCost.cs" />
@@ -182,6 +183,7 @@
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\TextConfig.cs" />
+    <Compile Include="StatusEffects\Radiation.cs" />
     <Compile Include="Subclasses\MtfMarksmanSubclass.cs" />
     <Compile Include="Subclasses\MtfShockTrooperSubclass.cs" />
     <Compile Include="Subclasses\MtfVanguardSubclass.cs" />
