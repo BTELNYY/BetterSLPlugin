@@ -19,7 +19,8 @@ namespace BetterSL.Patches.Generic
         {
             new Radiation(),
             new BetterBleeding(),
-            new Fear()
+            new Fear(),
+            new BetterScp207()
         };
 
         public static void Prefix(PlayerEffectsController __instance)

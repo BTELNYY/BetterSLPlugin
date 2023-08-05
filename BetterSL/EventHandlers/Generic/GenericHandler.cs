@@ -31,11 +31,6 @@ namespace BetterSL.EventHandlers.Generic
                 {
                     return;
                 }
-                ev.Player.EffectsManager.TryGetEffect(out Radiation statusEffect);
-                if (statusEffect == null)
-                {
-                    Log.Warning("Something went wrong with effect code!");
-                }
             });
         }
     }
