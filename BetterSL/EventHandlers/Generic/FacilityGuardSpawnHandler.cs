@@ -42,6 +42,11 @@ namespace BetterSL.EventHandlers.Generic
 
         public static void SpawnGuards()
         {
+            if (!Round.IsRoundStarted)
+            {
+                Log.Warning("Tried to spawn guards when round did not start yet.");
+                return;
+            }
             //Log.Debug("Spawning");
             List<DoorVariant> validDoors = new List<DoorVariant>();
             foreach(DoorVariant door in DoorVariant.AllDoors)
