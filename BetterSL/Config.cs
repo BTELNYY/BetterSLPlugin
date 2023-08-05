@@ -83,6 +83,25 @@ namespace BetterSL
             [ItemType.ArmorLight] = 1
         };
 
+        [Description("Max disarms per weapon. Set to -1 for unlimited, 0 to disable disarming with that weapon. (Note that this is calculated by which weapon you hold and not all weapons, so if you hold a unrestricted weapon and detain more people then a restricted weapon in your inventory can, the restricted weapon won't be able to disarm.)")]
+        public Dictionary<ItemType, int> MaxDisarmsPerWeapon { get; set; } = new Dictionary<ItemType, int>()
+        {
+            [ItemType.GunCOM15] = 1,
+            [ItemType.GunCOM18] = -1,
+            [ItemType.GunFSP9] = -1,
+            [ItemType.GunCrossvec] = -1,
+            [ItemType.GunE11SR] = -1,
+            [ItemType.GunAK] = -1,
+            [ItemType.GunShotgun] = -1,
+            [ItemType.GunRevolver] = -1,
+            [ItemType.GunLogicer] = -1,
+            [ItemType.GunCom45] = -1,
+            [ItemType.ParticleDisruptor] = -1,
+        };
+
+        [Description("What should the text be for you not being able to detain a player?")]
+        public string MaxDisarmsReachedMessage { get; set; } = "You can't detain any more players with this weapon!";
+
         [Description("Controls the effects intensity as the time on the warhead decreases, this array controls based on index. These are the time frames compared to indexes: \n # 90-80 Seconds: index 0 \n # 80-50 Seconds: index 1 \n # 50-30 Seconds: index 2 \n # 30 and bellow: index 3")]
         public byte[] IntensityPerTime { get; set; } = { 0, 1, 2, 3 };
 

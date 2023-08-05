@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using Hints;
 using Interactables.Interobjects;
 using MapGeneration.Distributors;
 using Mirror;
@@ -25,7 +26,9 @@ namespace BetterSL.Patches.Scp939
             }
             if (BetterSL.Resources.Extensions.InElevator(__instance.ScpRole.CameraPosition))
             {
-                Server.Broadcast.TargetAddElement(__instance.Owner.characterClassManager.connectionToClient, Plugin.GetConfig().Scp939GasInElevatorMessage, 5, Broadcast.BroadcastFlags.Normal);
+                Player.Get(__instance.Owner).SendBroadcast(Plugin.GetConfig().Scp939GasInElevatorMessage, 2);
+                TextHint hint = new TextHint(Plugin.GetConfig().Scp939GasInElevatorMessage);
+                __instance.Owner.hints.Show(hint);
                 __instance.ServerFailPlacement();
                 return false;
 

@@ -17,10 +17,11 @@ using System.Threading.Tasks;
 using UnityEngine;
 using InventorySystem.Items.Firearms.Attachments;
 using InventorySystem.Items.Firearms.Ammo;
+using InventorySystem.Disarming;
 
 namespace BetterSL.Resources
 {
-    public class Extensions
+    public static class Extensions
     {
         public static bool InElevator(Vector3 position)
         {
@@ -133,13 +134,21 @@ namespace BetterSL.Resources
             return false;
         }
 
-        public static List<DoorVariant> GetDoorsByZone(FacilityZone zone)
+        public static List<ReferenceHub> GetAllDisarmedPlayersByDisarmer(this ReferenceHub disarmer)
+        {
+            List<DisarmedPlayers.DisarmedEntry> disarmedEntries = DisarmedPlayers.Entries.Where(x => x.Disarmer == disarmer.networkIdentity.netId).ToList();
+            List<uint> netIds = disarmedEntries.Select(x => x.DisarmedPlayer).ToList();
+            List<ReferenceHub> hubs = ReferenceHub.AllHubs.Where(x => netIds.Contains(x.networkIdentity.netId)).ToList();
+            return hubs;
+        }
+
+        public static List<DoorVariant> GetDoorsByZone(this FacilityZone zone)
         {
             List<DoorVariant> doors = DoorVariant.AllDoors.Where(x => x.IsInZone(zone)).ToList();
             return doors;
         }
 
-        public static ItemPickupBase CreateItemPickup(ItemType type, Vector3 Position)
+        public static ItemPickupBase CreateItemPickup(this ItemType type, Vector3 Position)
         {
             ItemBase itemBase = ReferenceHub.HostHub.inventory.ServerAddItem(type);
             ItemPickupBase itemPickup = itemBase.ServerDropItem();
@@ -148,7 +157,7 @@ namespace BetterSL.Resources
             return itemPickup;
         }
 
-        public static ItemPickupBase CreateFirearmPickup(ItemType type, Vector3 Position, byte ammo)
+        public static ItemPickupBase CreateFirearmPickup(this ItemType type, Vector3 Position, byte ammo)
         {
             ItemBase itemBase = ReferenceHub.HostHub.inventory.ServerAddItem(type);
             if (itemBase is Firearm)
@@ -171,7 +180,7 @@ namespace BetterSL.Resources
             return itemPickup;
         }
 
-        public static ItemPickupBase CreateFirearmPickup(ItemType type, Vector3 Position, byte ammo, uint attachments)
+        public static ItemPickupBase CreateFirearmPickup(this ItemType type, Vector3 Position, byte ammo, uint attachments)
         {
             ItemBase itemBase = ReferenceHub.HostHub.inventory.ServerAddItem(type);
             if (itemBase is Firearm)
@@ -194,7 +203,7 @@ namespace BetterSL.Resources
             return itemPickup;
         }
 
-        public static ItemPickupBase CreateAmmoPickup(ItemType type, Vector3 Position, int ammo)
+        public static ItemPickupBase CreateAmmoPickup(this ItemType type, Vector3 Position, int ammo)
         {
             ItemBase itemBase = ReferenceHub.HostHub.inventory.ServerAddItem(type);
             if (itemBase is AmmoItem)
@@ -228,7 +237,7 @@ namespace BetterSL.Resources
             return null;
         }
 
-        public static void ApplyAttachments(Player ply)
+        public static void ApplyAttachments(this Player ply)
         {
             var item = ply.Items.Where(i => i is Firearm);
 
@@ -247,7 +256,7 @@ namespace BetterSL.Resources
             }
         }
 
-        public static T GetRandomElementFromList<T>(List<T> list)
+        public static T GetRandomElementFromList<T>(this List<T> list)
         {
             System.Random random = new System.Random();
             int index = random.Next(list.Count);

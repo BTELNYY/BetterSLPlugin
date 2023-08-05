@@ -151,6 +151,7 @@
     <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Managers\SubclassManager.cs" />
     <Compile Include="Patches\Generic\BreakableWindowPatch.cs" />
+    <Compile Include="Patches\Generic\DisarmPatch.cs" />
     <Compile Include="Patches\Generic\CorrodingDictionaryPatch.cs" />
     <Compile Include="Patches\Generic\EffectsPatch.cs" />
     <Compile Include="Patches\Generic\LczDeconDoorPatch.cs" />
