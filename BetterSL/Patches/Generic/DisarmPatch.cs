@@ -22,7 +22,7 @@ namespace BetterSL.Patches.Generic
             {
                 return true;
             }
-            if (Plugin.GetConfig().MaxDisarmsPerWeapon[currentItemType] <= currentDisarmedPlayers)
+            if (Plugin.GetConfig().MaxDisarmsPerWeapon[currentItemType] <= currentDisarmedPlayers && !targetHub.inventory.IsDisarmed())
             {
                 Player.Get(disarmerHub).SendBroadcast(Plugin.GetConfig().MaxDisarmsReachedMessage, 2);
                 TextHint hint = new TextHint(Plugin.GetConfig().MaxDisarmsReachedMessage);
