@@ -121,7 +121,7 @@ namespace BetterSL.Resources
         /// <returns>
         /// Wether or not the item was removed
         /// </returns>
-        public static bool RemoveItemFromPlayer(Player target, ItemType type)
+        public static bool RemoveItemFromPlayer(this Player target, ItemType type)
         {
             foreach (var item in target.ReferenceHub.inventory.UserInventory.Items.Keys)
             {
@@ -132,6 +132,11 @@ namespace BetterSL.Resources
                 }
             }
             return false;
+        }
+
+        public static List<ReferenceHub> GetPlayersByZone(this FacilityZone zone)
+        {
+            return ReferenceHub.AllHubs.Where(x => Player.Get(x).Zone == zone).ToList();
         }
 
         public static List<ReferenceHub> GetAllDisarmedPlayersByDisarmer(this ReferenceHub disarmer)

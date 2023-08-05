@@ -147,6 +147,7 @@
     <Compile Include="EventHandlers\Generic\MTFHandler.cs" />
     <Compile Include="EventHandlers\Generic\GenericHandler.cs" />
     <Compile Include="EventHandlers\Generic\DimensionBodyHandler.cs" />
+    <Compile Include="EventHandlers\Generic\WarheadHandler.cs" />
     <Compile Include="EventHandlers\Generic\WarheadRadiation.cs" />
     <Compile Include="Managers\DummyManager.cs" />
     <Compile Include="Managers\SubclassManager.cs" />

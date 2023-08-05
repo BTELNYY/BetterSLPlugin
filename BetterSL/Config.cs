@@ -114,6 +114,12 @@ namespace BetterSL
         [Description("Extra length of effect when it is applied.")]
         public float EffectDurationBuffer { get; set; } = 1f;
 
+        [Description("Should all players get radiation after the nuke has gone off?")]
+        public bool GiveRadiationAfterDetonation { get; set; } = true;
+
+        [Description("How long before surface becomes irradiated? (In seconds)")]
+        public float DetonationRadiationDelay { get; set; } = 30f;
+
         [Description("Should the crossvecs in LCZ armory be replaced with FSP9s?")]
         public bool LczArmoryReplaceCrossvecWithFSP9 { get; set; } = true;
 
