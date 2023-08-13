@@ -20,7 +20,8 @@ namespace BetterSL.Patches.Generic
             new Radiation(),
             new BetterBleeding(),
             new Fear(),
-            new BetterScp207()
+            new BetterScp207(),
+            new TestHealthEffect()
         };
 
         public static void Prefix(PlayerEffectsController __instance)
