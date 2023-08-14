@@ -1,47 +1,26 @@
-﻿using Mirror;
+﻿using BetterSL.StatusEffects.Resources;
+using Mirror;
 using PlayerRoles.PlayableScps.HumeShield;
 using PlayerStatsSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
 namespace BetterSL.Resources.NewStatModules
 {
-    public class NewHumeShieldStat : HumeShieldStat
+    public class NewHumeShieldStat : HumeShieldStat, IStatStart
     {
         public override float MinValue => SetMinValue;
 
-        public float SetMinValue { get; set; } = 0f;
+        public float SetMinValue = 0f;
 
-        public override float MaxValue => base.MaxValue;
+        public override float MaxValue => SetMaxValue;
 
-        public float SetMaxValue
-        {
-            get
-            {
-                HumeShieldModuleBase humeShieldModuleBase;
-                if (!TryGetHsModule(out humeShieldModuleBase))
-                {
-                    return SetMaxValue;
-                }
-                float roleMaxHs = humeShieldModuleBase.HsMax;
-                if(SetMaxValue != roleMaxHs)
-                {
-                    return SetMaxValue;
-                }
-                else
-                {
-                    return roleMaxHs;
-                }
-            }
-            set
-            {
-                SetMaxValue = value;
-            }
-        }
+        public float SetMaxValue = 100f;
 
         public HumeShieldModuleBase HumeShieldModule
         {
@@ -65,6 +44,15 @@ namespace BetterSL.Resources.NewStatModules
             {
                 HumeShieldModule = value;
             }
+        }
+
+        public void Start()
+        {
+            if (!TryGetHsModule(out var controller))
+            {
+                SetMaxValue = 0f;
+            }
+            SetMaxValue = controller.HsMax;
         }
 
         private bool TryGetHsModule(out HumeShieldModuleBase controller)

@@ -199,6 +199,7 @@
     <Compile Include="StatusEffects\Resources\IAdditionalHealthModifier.cs" />
     <Compile Include="StatusEffects\Resources\IHealthModifier.cs" />
     <Compile Include="StatusEffects\Resources\IHumeShieldModifier.cs" />
+    <Compile Include="StatusEffects\Resources\IStatStart.cs" />
     <Compile Include="StatusEffects\TestHealthEffect.cs" />
     <Compile Include="Subclasses\MtfMarksmanSubclass.cs" />
     <Compile Include="Subclasses\MtfShockTrooperSubclass.cs" />

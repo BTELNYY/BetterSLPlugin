@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BetterSL.Resources.NewStatModules;
 using BetterSL.StatusEffects.Resources;
+using PlayerStatsSystem;
 
 namespace BetterSL.StatusEffects
 {
@@ -14,7 +15,7 @@ namespace BetterSL.StatusEffects
         {
             get
             {
-                NewHealthStat stat = Hub.playerStats.StatModules[0] as NewHealthStat;
+                HealthStat stat = Hub.playerStats.StatModules[0] as HealthStat;
                 float hp = stat.MaxValue - Intensity;
                 return hp;
             }

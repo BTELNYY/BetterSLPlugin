@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using BetterSL.StatusEffects.Resources;
+using HarmonyLib;
 using Mirror;
 using PlayerStatsSystem;
 using System;
@@ -10,34 +11,15 @@ using UnityEngine;
 
 namespace BetterSL.Resources.NewStatModules
 {
-    public class NewAhpStat : AhpStat
+    public class NewAhpStat : AhpStat, IStatStart
     {
         public override float MaxValue => SetMaxValue;
 
-        public float SetMaxValue
-        {
-            get
-            {
-                float maxSoFar = (float)AccessTools.Field(typeof(AhpStat), "_maxSoFar").GetValue(this);
-                float setMaxValue = SetMaxValue;
-                if(setMaxValue != maxSoFar)
-                {
-                    return setMaxValue;
-                }
-                else
-                {
-                    return maxSoFar;
-                }
-            }
-            set
-            {
-                SetMaxValue = value;
-            }
-        }
+        public float SetMaxValue = 75f;
 
         public override float MinValue => SetMinValue;
 
-        public float SetMinValue { get; set; } = 0f;
+        public float SetMinValue = 0f;
 
         public List<AhpProcess> AhpProcesses 
         {
@@ -53,6 +35,11 @@ namespace BetterSL.Resources.NewStatModules
                 procList = value;
                 AhpProcesses = value;
             }
+        }
+
+        public void Start()
+        {
+            
         }
     }
 }
