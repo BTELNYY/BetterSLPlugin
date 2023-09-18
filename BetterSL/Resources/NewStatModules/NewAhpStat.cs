@@ -13,6 +13,9 @@ namespace BetterSL.Resources.NewStatModules
 {
     public class NewAhpStat : AhpStat, IStatStart
     {
+        public override float CurValue { get => base.CurValue; set => base.CurValue = value; }
+
+
         public override float MaxValue => SetMaxValue;
 
         public float SetMaxValue = 75f;

@@ -11,7 +11,7 @@ using BetterSL.StatusEffects.Resources;
 
 namespace BetterSL.Patches.Generic
 {
-    [HarmonyPatch(typeof(PlayerStats), "Awake")]
+    //[HarmonyPatch(typeof(PlayerStats), "Awake")]
     public class PlayerStatsPatch
     {
         public static void Prefix(PlayerStats __instance)

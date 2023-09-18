@@ -14,6 +14,8 @@ namespace BetterSL.Resources.NewStatModules
 {
     public class NewHumeShieldStat : HumeShieldStat, IStatStart
     {
+        public override float CurValue { get => base.CurValue; set => base.CurValue = value; }
+
         public override float MinValue => SetMinValue;
 
         public float SetMinValue = 0f;
